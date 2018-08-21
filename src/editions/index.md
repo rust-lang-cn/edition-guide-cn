@@ -1,50 +1,32 @@
-# What are Editions?
+# 什么是版本(Editions)？
 
-Rust ships releases on a six-week cycle. This means that users get a constant
-stream of new features. This is much faster than updates for other languages,
-but this also means that each update is smaller.  After a while, all of those
-tiny changes add up. But, from release to release, it can be hard to look back
-and say *"Wow, between Rust 1.10 and Rust 1.20, Rust has changed a lot!"*
+Rust 六周发布一次新版本。这意味着用户可以获得不断的新功能。
+这比其他语言的更新要快得多，但这也意味着每次更新都会更小。
+一段时间之后，所有这些微小的变化都加进来了。
+但是，从正式发布到正式发布，很难回头看看 *哇，在 Rust 1.10和 Rust 1.20之间，Rust已经发生了很大变化！*
 
-Every two or three years, we'll be producing a new *edition* of Rust. Each
-edition brings together the features that have landed into a clear package, with
-fully updated documentation and tooling. New editions ship through the usual
-release process.
+每隔两三年，我们将制作一个新 *版本* 的 Rust。
+每个版本都将功能集成到一个清晰的包中，并提供全面更新的文档和工具。
+新版本通过正常的发布流程发布。
 
-This serves different purposes for different people:
+这为不同的人提供不同的目的：
 
-- For active Rust users, it brings together incremental changes into an
-  easy-to-understand package.
+- 对于活跃的 Rust 用户，它将增量更改集成到易于理解的包中。
 
-- For non-users, it signals that some major advancements have landed, which
-  might make Rust worth another look.
+- 对于非用户而言，它表明一些重大进步已经落地，这可能使 Rust 值得再看一眼。
 
-- For those developing Rust itself, it provides a rallying point for the project as a
-  whole.
+- 对于那些开发 Rust 本身的人来说，它为整个项目提供了一个集结点。
 
-## Compatibility
+## 兼容性
+当编译器中出现新版本时，crates 必须明确选择使用它才能充分利用它。
+此选择允许版本包含不兼容的更改，例如添加可能与代码中的标识符冲突的新关键字，或将警告转换为错误。
+Rust 编译器将支持编译器发布之前存在的所有版本，并且可以将任何受支持版本的 crates 链接在一起。
+版本更改仅影响编译器最初解析代码的方式。 
+因此，如果您正在使用 Rust 2015，并且您的某个依赖项使用 Rust 2018，那么一切正常。相反的情况也适用。
 
-When a new edition becomes available in the compiler, crates must explicitly opt
-in to it to take full advantage. This opt in enables editions to contain
-incompatible changes, like adding a new keyword that might conflict with
-identifiers in code, or turning warnings into errors. A Rust compiler will
-support all editions that existed prior to the compiler's release, and can link
-crates of any supported editions together.
-Edition changes only affect the way the compiler initially parses the code.
-Therefore, if you're using Rust 2015, and
-one of your dependencies uses Rust 2018, it all works just fine. The opposite
-situation works as well.
+需要明确的是：大多数功能都适用于所有版本。随着新的稳定版本的发布，使用任何版本的 Rust 的人将继续看到改进。
+但是，在某些情况下，主要是在添加新关键字时，但有时由于其他原因，可能会有新功能仅在以后的版本中提供。如果要利用此类功能，则只需升级。
 
-Just to be clear: most features will be available on all editions.
-People using any edition of Rust will continue to see improvements as new
-stable releases are made.  In some cases however, mainly when new keywords are
-added, but sometimes for other reasons, there may be new features that are only
-available in later editions.  You only need to upgrade if you want to take
-advantage of such features.
-
-## Trying out the 2018 edition
-
-At the time of writing, there are two editions: 2015 and 2018. 2015 is today's
-Rust; Rust 2018 will ship later this year. To transition to the 2018 edition
-from the 2015 edition, you'll want to get started with the [transition
-section](transitioning-your-code-to-a-new-edition.html).
+## 试一下2018版本
+在撰写本文时，有两个版本：2015和2018。2015是现在的 Rust版本; Rust 2018将于今年晚些时候发布。
+要从2015版本过渡到2018版本，您需要开始使用[迁移说明](transitioning-your-code-to-a-new-edition.html)。

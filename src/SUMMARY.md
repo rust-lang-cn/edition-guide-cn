@@ -1,11 +1,11 @@
-# The Edition Guide
+# 版本指南
 
-[Introduction](introduction.md)
+[简介](introduction.md)
 
-## What are editions?
+## 什么是版本(Editions)？
 
-- [What are editions?](editions/index.md)
-  - [Transitioning your code to a new edition](editions/transitioning-your-code-to-a-new-edition.md)
+- [什么是版本(Editions)？](editions/index.md)
+  - [将你的代码迁移到新版本](editions/transitioning-your-code-to-a-new-edition.md)
 
 ## Rust 2015
 

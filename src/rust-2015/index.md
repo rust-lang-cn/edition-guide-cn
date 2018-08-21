@@ -1,18 +1,9 @@
 # Rust 2015
 
-Rust 2015 has a theme of "stability". It commenced with the release of 1.0,
-and is the "default edition". The edition system was conceived in late 2017,
-but Rust 1.0 was released in May of 2015. As such, 2015 is the edition
-that you get when you don't specify any particular edition, for backwards
-compatibility reasons.
+Rust 2015 的主题是“稳定性”。 它从1.0版本开始，是“默认版”。 
+该版本系统于2017年底构思，但 Rust 1.0 于2015年5月发布。因此，2015年是您未指定任何特定版本时获得的版本，出于向后兼容性原因。
 
-"Stability" is the theme of Rust 2015 because 1.0 marked a huge change in
-Rust development. Previous to Rust 1.0, Rust was changing on a daily basis.
-This made it very difficult to write large software in Rust, and made it
-difficult to learn. With the release of Rust 1.0 and Rust 2015, we committed
-to backwards compatibility, ensuring a solid foundation for people to build
-projects on top of.
+“稳定性”是 Rust 2015 的主题，因为1.0标志着 Rust 开发的巨大变化。 在 Rust 1.0 之前，Rust 每天都在变化。 这使得在 Rust 中编写大型软件变得非常困难，并且难以学习。 
+随着 Rust 1.0 和 Rust 2015 的发布，我们致力于向后兼容，确保为人们构建项目奠定坚实的基础。
 
-Since it's the default edition, there's no way to port your code to Rust
-2015; it just *is*. You'll be transitioning *away* from 2015, but never
-really *to* 2015. As such, there's not much else to say about it!
+由于它是默认版本，因此无法将代码移植到 Rust 2015; 它 *就是*。 你将从 2015 开始 *过渡*，但从未真正 *到* 2015版。因此，没有什么可说的了！

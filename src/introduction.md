@@ -1,16 +1,12 @@
-# Introduction
+# 简介
 
-Welcome to the Rust Edition Guide! "Editions" are Rust's way of communicating
-large changes in the way that it feels to write Rust code.
+欢迎来到 Rust 版本(Edition)使用指南！ "Editions" 是通过编写 Rust 代码来传达巨大改变的一种方式。
 
-In this guide, we'll discuss:
+在指南中，我们将讨论：
+* 什么是版本(editions)
+* 每个版本什么样
+* 如何将你的代码从一个版本迁移到另一个版本
 
-* What editions are
-* What each edition is about
-* How to migrate your code from one edition to another
-
-Note that the standard library grows with each Rust release; there are *many*
-additions to the standard library that are not called out in this guide. Only
-the major ones are, but there's tons of medium and small things that are
-great too. You may want to check out [the standard library
-documentation](https://doc.rust-lang.org/std/) as well.
+请注意，标准库随每个Rust版本的增长而增长; 标准库中有*许多*添加的内容，本指南未对其进行说明。 
+只包含那些主要的变化，当然同时也有大量的中小型的改变也很棒。 
+您可能还想查看[标准库文档](https://doc.rust-lang.org/std/)。
