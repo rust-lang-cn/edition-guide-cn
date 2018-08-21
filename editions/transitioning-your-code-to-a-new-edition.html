@@ -3,21 +3,24 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Transitioning your code to a new edition - The Edition Guide</title>
+        <title>将你的代码迁移到新版本 - The Edition Guide</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="stylesheet" href="../book.css">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
 
-        <link rel="shortcut icon" href="favicon.png">
-
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-
+        <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
         <link rel="stylesheet" href="../tomorrow-night.css">
         <link rel="stylesheet" href="../ayu-highlight.css">
@@ -26,9 +29,11 @@
         
 
         
-
     </head>
     <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "../";</script>
+
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
             try {
@@ -67,7 +72,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="../introduction.html">Introduction</a></li><li><a href="../editions/index.html"><strong aria-hidden="true">1.</strong> What are editions?</a></li><li><ol class="section"><li><a href="../editions/transitioning-your-code-to-a-new-edition.html" class="active"><strong aria-hidden="true">1.1.</strong> Transitioning your code to a new edition</a></li></ol></li><li><a href="../rust-2015/index.html"><strong aria-hidden="true">2.</strong> Rust 2015</a></li><li><a href="../rust-2018/index.html"><strong aria-hidden="true">3.</strong> Rust 2018</a></li><li><ol class="section"><li><a href="../rust-2018/module-system/index.html"><strong aria-hidden="true">3.1.</strong> Module system</a></li><li><ol class="section"><li><a href="../rust-2018/module-system/raw-identifiers.html"><strong aria-hidden="true">3.1.1.</strong> Raw identifiers</a></li><li><a href="../rust-2018/module-system/path-clarity.html"><strong aria-hidden="true">3.1.2.</strong> Path clarity</a></li><li><a href="../rust-2018/module-system/more-visibility-modifiers.html"><strong aria-hidden="true">3.1.3.</strong> More visibility modifiers</a></li><li><a href="../rust-2018/module-system/nested-imports-with-use.html"><strong aria-hidden="true">3.1.4.</strong> Nested imports with use</a></li></ol></li><li><a href="../rust-2018/error-handling-and-panics/index.html"><strong aria-hidden="true">3.2.</strong> Error handling and panics</a></li><li><ol class="section"><li><a href="../rust-2018/error-handling-and-panics/the-question-mark-operator-for-easier-error-handling.html"><strong aria-hidden="true">3.2.1.</strong> The ? operator for easier error handling</a></li><li><a href="../rust-2018/error-handling-and-panics/question-mark-in-main-and-tests.html"><strong aria-hidden="true">3.2.2.</strong> ? in main and tests</a></li><li><a href="../rust-2018/error-handling-and-panics/controlling-panics-with-std-panic.html"><strong aria-hidden="true">3.2.3.</strong> Controlling panics with std::panic</a></li><li><a href="../rust-2018/error-handling-and-panics/aborting-on-panic.html"><strong aria-hidden="true">3.2.4.</strong> Aborting on panic</a></li></ol></li><li><a href="../rust-2018/control-flow/index.html"><strong aria-hidden="true">3.3.</strong> Control flow</a></li><li><ol class="section"><li><a href="../rust-2018/control-flow/loops-can-break-with-a-value.html"><strong aria-hidden="true">3.3.1.</strong> Loops can break with a value</a></li><li><a href="../rust-2018/control-flow/async-await-for-easier-concurrency.html"><strong aria-hidden="true">3.3.2.</strong> async/await for easier concurrency</a></li></ol></li><li><a href="../rust-2018/trait-system/index.html"><strong aria-hidden="true">3.4.</strong> Trait system</a></li><li><ol class="section"><li><a href="../rust-2018/trait-system/impl-trait-for-returning-complex-types-with-ease.html"><strong aria-hidden="true">3.4.1.</strong> impl Trait for returning complex types with ease</a></li><li><a href="../rust-2018/trait-system/dyn-trait-for-trait-objects.html"><strong aria-hidden="true">3.4.2.</strong> dyn Trait for trait objects</a></li><li><a href="../rust-2018/trait-system/more-container-types-support-trait-objects.html"><strong aria-hidden="true">3.4.3.</strong> More container types support trait objects</a></li><li><a href="../rust-2018/trait-system/associated-constants.html"><strong aria-hidden="true">3.4.4.</strong> Associated constants</a></li></ol></li><li><a href="../rust-2018/slice-patterns.html"><strong aria-hidden="true">3.5.</strong> Slice patterns</a></li><li><a href="../rust-2018/ownership-and-lifetimes/index.html"><strong aria-hidden="true">3.6.</strong> Ownership and lifetimes</a></li><li><ol class="section"><li><a href="../rust-2018/ownership-and-lifetimes/default-match-bindings.html"><strong aria-hidden="true">3.6.1.</strong> Default match bindings</a></li><li><a href="../rust-2018/ownership-and-lifetimes/the-anonymous-lifetime.html"><strong aria-hidden="true">3.6.2.</strong> '_, the anonymous lifetime</a></li><li><a href="../rust-2018/ownership-and-lifetimes/lifetime-elision-in-impl.html"><strong aria-hidden="true">3.6.3.</strong> Lifetime elision in impl</a></li><li><a href="../rust-2018/ownership-and-lifetimes/inference-in-structs.html"><strong aria-hidden="true">3.6.4.</strong> T: 'a inference in structs</a></li><li><a href="../rust-2018/ownership-and-lifetimes/simpler-lifetimes-in-static-and-const.html"><strong aria-hidden="true">3.6.5.</strong> Simpler lifetimes in static and const</a></li></ol></li><li><a href="../rust-2018/data-types/index.html"><strong aria-hidden="true">3.7.</strong> Data types</a></li><li><ol class="section"><li><a href="../rust-2018/data-types/field-init-shorthand.html"><strong aria-hidden="true">3.7.1.</strong> Field init shorthand</a></li><li><a href="../rust-2018/data-types/inclusive-ranges.html"><strong aria-hidden="true">3.7.2.</strong> ..= for inclusive ranges</a></li><li><a href="../rust-2018/data-types/128-bit-integers.html"><strong aria-hidden="true">3.7.3.</strong> 128 bit integers</a></li><li><a href="../rust-2018/data-types/operator-equals-are-now-implementable.html"><strong aria-hidden="true">3.7.4.</strong> &quot;Operator-equals&quot; are now implementable</a></li><li><a href="../rust-2018/data-types/union-for-an-unsafe-form-of-enum.html"><strong aria-hidden="true">3.7.5.</strong> union for an unsafe form of enum</a></li><li><a href="../rust-2018/data-types/choosing-alignment-with-the-repr-attribute.html"><strong aria-hidden="true">3.7.6.</strong> Choosing alignment with the repr attribute</a></li></ol></li><li><a href="../rust-2018/simd-for-faster-computing.html"><strong aria-hidden="true">3.8.</strong> SIMD for faster computing</a></li><li><a href="../rust-2018/macros/index.html"><strong aria-hidden="true">3.9.</strong> Macros</a></li><li><ol class="section"><li><a href="../rust-2018/macros/custom-derive.html"><strong aria-hidden="true">3.9.1.</strong> Custom Derive</a></li><li><a href="../rust-2018/macros/macro-changes.html"><strong aria-hidden="true">3.9.2.</strong> Macro changes</a></li></ol></li><li><a href="../rust-2018/the-compiler/index.html"><strong aria-hidden="true">3.10.</strong> The compiler</a></li><li><ol class="section"><li><a href="../rust-2018/the-compiler/improved-error-messages.html"><strong aria-hidden="true">3.10.1.</strong> Improved error messages</a></li><li><a href="../rust-2018/the-compiler/incremental-compilation-for-faster-compiles.html"><strong aria-hidden="true">3.10.2.</strong> Incremental Compilation for faster compiles</a></li><li><a href="../rust-2018/the-compiler/an-attribute-for-deprecation.html"><strong aria-hidden="true">3.10.3.</strong> An attribute for deprecation</a></li></ol></li><li><a href="../rust-2018/rustup-for-managing-rust-versions.html"><strong aria-hidden="true">3.11.</strong> Rustup for managing Rust versions</a></li><li><a href="../rust-2018/cargo-and-crates-io/index.html"><strong aria-hidden="true">3.12.</strong> Cargo and crates.io</a></li><li><ol class="section"><li><a href="../rust-2018/cargo-and-crates-io/cargo-check-for-faster-checking.html"><strong aria-hidden="true">3.12.1.</strong> cargo check for faster checking</a></li><li><a href="../rust-2018/cargo-and-crates-io/cargo-install-for-easy-installation-of-tools.html"><strong aria-hidden="true">3.12.2.</strong> cargo install for easy installation of tools</a></li><li><a href="../rust-2018/cargo-and-crates-io/cargo-new-defaults-to-a-binary-project.html"><strong aria-hidden="true">3.12.3.</strong> cargo new defaults to a binary project</a></li><li><a href="../rust-2018/cargo-and-crates-io/cargo-rustc-for-passing-arbitrary-flags-to-rustc.html"><strong aria-hidden="true">3.12.4.</strong> cargo rustc for passing arbitrary flags to rustc</a></li><li><a href="../rust-2018/cargo-and-crates-io/cargo-workspaces-for-multi-package-projects.html"><strong aria-hidden="true">3.12.5.</strong> Cargo workspaces for multi-package projects</a></li><li><a href="../rust-2018/cargo-and-crates-io/multi-file-examples.html"><strong aria-hidden="true">3.12.6.</strong> Multi-file examples</a></li><li><a href="../rust-2018/cargo-and-crates-io/replacing-dependencies-with-patch.html"><strong aria-hidden="true">3.12.7.</strong> Replacing dependencies with patch</a></li><li><a href="../rust-2018/cargo-and-crates-io/cargo-can-use-a-local-registry-replacement.html"><strong aria-hidden="true">3.12.8.</strong> Cargo can use a local registry replacement</a></li><li><a href="../rust-2018/cargo-and-crates-io/crates-io-disallows-wildcard-dependencies.html"><strong aria-hidden="true">3.12.9.</strong> Crates.io disallows wildcard dependencies</a></li></ol></li><li><a href="../rust-2018/documentation/index.html"><strong aria-hidden="true">3.13.</strong> Documentation</a></li><li><ol class="section"><li><a href="../rust-2018/documentation/new-editions-of-the-book.html"><strong aria-hidden="true">3.13.1.</strong> New editions of the &quot;the book&quot;</a></li><li><a href="../rust-2018/documentation/the-rust-bookshelf.html"><strong aria-hidden="true">3.13.2.</strong> The Rust Bookshelf</a></li><li><a href="../rust-2018/documentation/the-rustonomicon.html"><strong aria-hidden="true">3.13.3.</strong> The Rustonomicon</a></li><li><a href="../rust-2018/documentation/std-os-has-documentation-for-all-platforms.html"><strong aria-hidden="true">3.13.4.</strong> Full documentation for std::os</a></li></ol></li><li><a href="../rust-2018/rustdoc/index.html"><strong aria-hidden="true">3.14.</strong> rustdoc</a></li><li><ol class="section"><li><a href="../rust-2018/rustdoc/documentation-tests-can-now-compile-fail.html"><strong aria-hidden="true">3.14.1.</strong> Documentation tests can now compile-fail</a></li><li><a href="../rust-2018/rustdoc/rustdoc-uses-commonmark.html"><strong aria-hidden="true">3.14.2.</strong> Rustdoc uses CommonMark</a></li></ol></li><li><a href="../rust-2018/platform-and-target-support/index.html"><strong aria-hidden="true">3.15.</strong> Platform and target support</a></li><li><ol class="section"><li><a href="../rust-2018/platform-and-target-support/libcore-for-low-level-rust.html"><strong aria-hidden="true">3.15.1.</strong> libcore for low-level Rust</a></li><li><a href="../rust-2018/platform-and-target-support/webassembly-support.html"><strong aria-hidden="true">3.15.2.</strong> WebAssembly support</a></li><li><a href="../rust-2018/platform-and-target-support/global-allocators.html"><strong aria-hidden="true">3.15.3.</strong> Global allocators</a></li><li><a href="../rust-2018/platform-and-target-support/msvc-toolchain-support.html"><strong aria-hidden="true">3.15.4.</strong> MSVC toolchain support</a></li><li><a href="../rust-2018/platform-and-target-support/musl-support-for-fully-static-binaries.html"><strong aria-hidden="true">3.15.5.</strong> MUSL support for fully static binaries</a></li><li><a href="../rust-2018/platform-and-target-support/cdylib-crates-for-c-interoperability.html"><strong aria-hidden="true">3.15.6.</strong> cdylib crates for C interoperability</a></li></ol></li></ol></li><li><a href="../unstable-feature-status.html"><strong aria-hidden="true">4.</strong> Unstable feature status</a></li></ol>
+            <ol class="chapter"><li class="affix"><a href="../introduction.html">简介</a></li><li><a href="../editions/index.html"><strong aria-hidden="true">1.</strong> 什么是版本(Editions)？</a></li><li><ol class="section"><li><a href="../editions/transitioning-your-code-to-a-new-edition.html" class="active"><strong aria-hidden="true">1.1.</strong> 将你的代码迁移到新版本</a></li></ol></li><li><a href="../rust-2015/index.html"><strong aria-hidden="true">2.</strong> Rust 2015</a></li><li><a href="../rust-2018/index.html"><strong aria-hidden="true">3.</strong> Rust 2018</a></li><li><ol class="section"><li><a href="../rust-2018/module-system/index.html"><strong aria-hidden="true">3.1.</strong> Module system</a></li><li><ol class="section"><li><a href="../rust-2018/module-system/raw-identifiers.html"><strong aria-hidden="true">3.1.1.</strong> Raw identifiers</a></li><li><a href="../rust-2018/module-system/path-clarity.html"><strong aria-hidden="true">3.1.2.</strong> Path clarity</a></li><li><a href="../rust-2018/module-system/more-visibility-modifiers.html"><strong aria-hidden="true">3.1.3.</strong> More visibility modifiers</a></li><li><a href="../rust-2018/module-system/nested-imports-with-use.html"><strong aria-hidden="true">3.1.4.</strong> Nested imports with use</a></li></ol></li><li><a href="../rust-2018/error-handling-and-panics/index.html"><strong aria-hidden="true">3.2.</strong> Error handling and panics</a></li><li><ol class="section"><li><a href="../rust-2018/error-handling-and-panics/the-question-mark-operator-for-easier-error-handling.html"><strong aria-hidden="true">3.2.1.</strong> The ? operator for easier error handling</a></li><li><a href="../rust-2018/error-handling-and-panics/question-mark-in-main-and-tests.html"><strong aria-hidden="true">3.2.2.</strong> ? in main and tests</a></li><li><a href="../rust-2018/error-handling-and-panics/controlling-panics-with-std-panic.html"><strong aria-hidden="true">3.2.3.</strong> Controlling panics with std::panic</a></li><li><a href="../rust-2018/error-handling-and-panics/aborting-on-panic.html"><strong aria-hidden="true">3.2.4.</strong> Aborting on panic</a></li></ol></li><li><a href="../rust-2018/control-flow/index.html"><strong aria-hidden="true">3.3.</strong> Control flow</a></li><li><ol class="section"><li><a href="../rust-2018/control-flow/loops-can-break-with-a-value.html"><strong aria-hidden="true">3.3.1.</strong> Loops can break with a value</a></li><li><a href="../rust-2018/control-flow/async-await-for-easier-concurrency.html"><strong aria-hidden="true">3.3.2.</strong> async/await for easier concurrency</a></li></ol></li><li><a href="../rust-2018/trait-system/index.html"><strong aria-hidden="true">3.4.</strong> Trait system</a></li><li><ol class="section"><li><a href="../rust-2018/trait-system/impl-trait-for-returning-complex-types-with-ease.html"><strong aria-hidden="true">3.4.1.</strong> impl Trait for returning complex types with ease</a></li><li><a href="../rust-2018/trait-system/dyn-trait-for-trait-objects.html"><strong aria-hidden="true">3.4.2.</strong> dyn Trait for trait objects</a></li><li><a href="../rust-2018/trait-system/more-container-types-support-trait-objects.html"><strong aria-hidden="true">3.4.3.</strong> More container types support trait objects</a></li><li><a href="../rust-2018/trait-system/associated-constants.html"><strong aria-hidden="true">3.4.4.</strong> Associated constants</a></li></ol></li><li><a href="../rust-2018/slice-patterns.html"><strong aria-hidden="true">3.5.</strong> Slice patterns</a></li><li><a href="../rust-2018/ownership-and-lifetimes/index.html"><strong aria-hidden="true">3.6.</strong> Ownership and lifetimes</a></li><li><ol class="section"><li><a href="../rust-2018/ownership-and-lifetimes/default-match-bindings.html"><strong aria-hidden="true">3.6.1.</strong> Default match bindings</a></li><li><a href="../rust-2018/ownership-and-lifetimes/the-anonymous-lifetime.html"><strong aria-hidden="true">3.6.2.</strong> '_, the anonymous lifetime</a></li><li><a href="../rust-2018/ownership-and-lifetimes/lifetime-elision-in-impl.html"><strong aria-hidden="true">3.6.3.</strong> Lifetime elision in impl</a></li><li><a href="../rust-2018/ownership-and-lifetimes/inference-in-structs.html"><strong aria-hidden="true">3.6.4.</strong> T: 'a inference in structs</a></li><li><a href="../rust-2018/ownership-and-lifetimes/simpler-lifetimes-in-static-and-const.html"><strong aria-hidden="true">3.6.5.</strong> Simpler lifetimes in static and const</a></li></ol></li><li><a href="../rust-2018/data-types/index.html"><strong aria-hidden="true">3.7.</strong> Data types</a></li><li><ol class="section"><li><a href="../rust-2018/data-types/field-init-shorthand.html"><strong aria-hidden="true">3.7.1.</strong> Field init shorthand</a></li><li><a href="../rust-2018/data-types/inclusive-ranges.html"><strong aria-hidden="true">3.7.2.</strong> ..= for inclusive ranges</a></li><li><a href="../rust-2018/data-types/128-bit-integers.html"><strong aria-hidden="true">3.7.3.</strong> 128 bit integers</a></li><li><a href="../rust-2018/data-types/operator-equals-are-now-implementable.html"><strong aria-hidden="true">3.7.4.</strong> &quot;Operator-equals&quot; are now implementable</a></li><li><a href="../rust-2018/data-types/union-for-an-unsafe-form-of-enum.html"><strong aria-hidden="true">3.7.5.</strong> union for an unsafe form of enum</a></li><li><a href="../rust-2018/data-types/choosing-alignment-with-the-repr-attribute.html"><strong aria-hidden="true">3.7.6.</strong> Choosing alignment with the repr attribute</a></li></ol></li><li><a href="../rust-2018/simd-for-faster-computing.html"><strong aria-hidden="true">3.8.</strong> SIMD for faster computing</a></li><li><a href="../rust-2018/macros/index.html"><strong aria-hidden="true">3.9.</strong> Macros</a></li><li><ol class="section"><li><a href="../rust-2018/macros/custom-derive.html"><strong aria-hidden="true">3.9.1.</strong> Custom Derive</a></li><li><a href="../rust-2018/macros/macro-changes.html"><strong aria-hidden="true">3.9.2.</strong> Macro changes</a></li></ol></li><li><a href="../rust-2018/the-compiler/index.html"><strong aria-hidden="true">3.10.</strong> The compiler</a></li><li><ol class="section"><li><a href="../rust-2018/the-compiler/improved-error-messages.html"><strong aria-hidden="true">3.10.1.</strong> Improved error messages</a></li><li><a href="../rust-2018/the-compiler/incremental-compilation-for-faster-compiles.html"><strong aria-hidden="true">3.10.2.</strong> Incremental Compilation for faster compiles</a></li><li><a href="../rust-2018/the-compiler/an-attribute-for-deprecation.html"><strong aria-hidden="true">3.10.3.</strong> An attribute for deprecation</a></li></ol></li><li><a href="../rust-2018/rustup-for-managing-rust-versions.html"><strong aria-hidden="true">3.11.</strong> Rustup for managing Rust versions</a></li><li><a href="../rust-2018/cargo-and-crates-io/index.html"><strong aria-hidden="true">3.12.</strong> Cargo and crates.io</a></li><li><ol class="section"><li><a href="../rust-2018/cargo-and-crates-io/cargo-check-for-faster-checking.html"><strong aria-hidden="true">3.12.1.</strong> cargo check for faster checking</a></li><li><a href="../rust-2018/cargo-and-crates-io/cargo-install-for-easy-installation-of-tools.html"><strong aria-hidden="true">3.12.2.</strong> cargo install for easy installation of tools</a></li><li><a href="../rust-2018/cargo-and-crates-io/cargo-new-defaults-to-a-binary-project.html"><strong aria-hidden="true">3.12.3.</strong> cargo new defaults to a binary project</a></li><li><a href="../rust-2018/cargo-and-crates-io/cargo-rustc-for-passing-arbitrary-flags-to-rustc.html"><strong aria-hidden="true">3.12.4.</strong> cargo rustc for passing arbitrary flags to rustc</a></li><li><a href="../rust-2018/cargo-and-crates-io/cargo-workspaces-for-multi-package-projects.html"><strong aria-hidden="true">3.12.5.</strong> Cargo workspaces for multi-package projects</a></li><li><a href="../rust-2018/cargo-and-crates-io/multi-file-examples.html"><strong aria-hidden="true">3.12.6.</strong> Multi-file examples</a></li><li><a href="../rust-2018/cargo-and-crates-io/replacing-dependencies-with-patch.html"><strong aria-hidden="true">3.12.7.</strong> Replacing dependencies with patch</a></li><li><a href="../rust-2018/cargo-and-crates-io/cargo-can-use-a-local-registry-replacement.html"><strong aria-hidden="true">3.12.8.</strong> Cargo can use a local registry replacement</a></li><li><a href="../rust-2018/cargo-and-crates-io/crates-io-disallows-wildcard-dependencies.html"><strong aria-hidden="true">3.12.9.</strong> Crates.io disallows wildcard dependencies</a></li></ol></li><li><a href="../rust-2018/documentation/index.html"><strong aria-hidden="true">3.13.</strong> Documentation</a></li><li><ol class="section"><li><a href="../rust-2018/documentation/new-editions-of-the-book.html"><strong aria-hidden="true">3.13.1.</strong> New editions of the &quot;the book&quot;</a></li><li><a href="../rust-2018/documentation/the-rust-bookshelf.html"><strong aria-hidden="true">3.13.2.</strong> The Rust Bookshelf</a></li><li><a href="../rust-2018/documentation/the-rustonomicon.html"><strong aria-hidden="true">3.13.3.</strong> The Rustonomicon</a></li><li><a href="../rust-2018/documentation/std-os-has-documentation-for-all-platforms.html"><strong aria-hidden="true">3.13.4.</strong> Full documentation for std::os</a></li></ol></li><li><a href="../rust-2018/rustdoc/index.html"><strong aria-hidden="true">3.14.</strong> rustdoc</a></li><li><ol class="section"><li><a href="../rust-2018/rustdoc/documentation-tests-can-now-compile-fail.html"><strong aria-hidden="true">3.14.1.</strong> Documentation tests can now compile-fail</a></li><li><a href="../rust-2018/rustdoc/rustdoc-uses-commonmark.html"><strong aria-hidden="true">3.14.2.</strong> Rustdoc uses CommonMark</a></li></ol></li><li><a href="../rust-2018/platform-and-target-support/index.html"><strong aria-hidden="true">3.15.</strong> Platform and target support</a></li><li><ol class="section"><li><a href="../rust-2018/platform-and-target-support/libcore-for-low-level-rust.html"><strong aria-hidden="true">3.15.1.</strong> libcore for low-level Rust</a></li><li><a href="../rust-2018/platform-and-target-support/webassembly-support.html"><strong aria-hidden="true">3.15.2.</strong> WebAssembly support</a></li><li><a href="../rust-2018/platform-and-target-support/global-allocators.html"><strong aria-hidden="true">3.15.3.</strong> Global allocators</a></li><li><a href="../rust-2018/platform-and-target-support/msvc-toolchain-support.html"><strong aria-hidden="true">3.15.4.</strong> MSVC toolchain support</a></li><li><a href="../rust-2018/platform-and-target-support/musl-support-for-fully-static-binaries.html"><strong aria-hidden="true">3.15.5.</strong> MUSL support for fully static binaries</a></li><li><a href="../rust-2018/platform-and-target-support/cdylib-crates-for-c-interoperability.html"><strong aria-hidden="true">3.15.6.</strong> cdylib crates for C interoperability</a></li></ol></li></ol></li><li><a href="../unstable-feature-status.html"><strong aria-hidden="true">4.</strong> Unstable feature status</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -131,112 +136,83 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#transitioning-your-code-to-a-new-edition" id="transitioning-your-code-to-a-new-edition"><h1>Transitioning your code to a new edition</h1></a>
-<p>New editions might change the way you write Rust -- they add new syntax,
-language, and library features but also remove features. For example,
-<code>try</code>, <code>async</code>, and <code>await</code> are keywords in Rust 2018, but not Rust 2015.
-Despite this it's our intention that the migration to new editions is as
-smooth an experience as possible. It's considered a bug if it's difficult to
-upgrade your crate to a new edition. If you have a difficult time then a bug
-should be filed with Rust itself.</p>
-<p>Transitioning between editions is built around compiler lints. Fundamentally,
-the process works like this:</p>
+                        <a class="header" href="#a迁移你的代码到新版本" id="a迁移你的代码到新版本"><h1>迁移你的代码到新版本</h1></a>
+<p>新版本可能会改变您编写 Rust 的方式 - 它们会添加新的语法，语言和库功能，但也会删除功能。
+例如，<code>try</code>，<code>async</code>和<code>await</code>是 Rust 2018 中的关键字，但不在 Rust 2015中。
+尽管如此，我们试图尽可能顺利地迁移到新版本。
+如果很难将您的 crates 升级到新版本，那么这可能是一个 bug 。如果您遇到困难，那么应该向 Rust 提交一个 bug。</p>
+<p>版本之间的迁移是围绕编译器标签(lints)构建的。从根本上说，这个过程是这样的：</p>
 <ul>
-<li>Turn on lints to indicate where code is incompatible with a new edition</li>
-<li>Get your code compiling with no warnings.</li>
-<li>Opt in to the new edition, the code should compile.</li>
-<li>Optionally, enable lints about <em>idiomatic</em> code in the new edition.</li>
+<li>打开 lints 以指示代码与新版本不兼容的位置</li>
+<li>在没有警告的情况下编译代码。</li>
+<li>选择加入新版本，代码应该编译。
+*（可选）在新版本中启用有关 <em>idiomatic</em> 代码的 lints。</li>
 </ul>
-<p>Luckily, we've been working on Cargo to help assist with this process,
-culminating in a new built-in subcommand <code>cargo fix</code>. It can take suggestions
-from the compiler and automatically re-write your code to comply with new
-features and idioms, drastically reducing the number of warnings you need to fix
-manually!</p>
+<p>幸运的是，我们一直致力于 Cargo 帮助完成这一过程，最终推出了一个新的内置子命令 <code>cargo fix</code>。
+它可以从编译器中获取建议并自动重新编写代码以符合新功能和习惯用法，从而大大减少手动修复所需的警告数量！</p>
 <blockquote>
-<p><code>cargo fix</code> is still quite young, and very much a work in development. But it
-works for the basics! We're working hard on making it better and more robust,
-but please bear with us for now.</p>
+<p><code>cargo fix</code> 仍然很早期，而且非常重要。但它已经适用于基础部分！我们正在努力使其变得更好，更强大，但暂时不必使用。</p>
 </blockquote>
-<a class="header" href="#the-preview-period" id="the-preview-period"><h2>The preview period</h2></a>
-<p>Before an edition is released, it will have a &quot;preview&quot; phase which lets you
-try out the new edition in nightly Rust before its release. Currently Rust 2018
-is in its preview phase and because of this, there's an extra step you need to
-take to opt in.  Add this feature flag to your <code>lib.rs</code> or <code>main.rs</code> as well as
-to any examples in the <code>examples</code> directory of your project if you have one:</p>
+<a class="header" href="#a预览期" id="a预览期"><h2>预览期</h2></a>
+<p>在发布版本之前，它将有一个“预览”阶段，让您可以在发布之前在 nightly 的 Rust 中试用新版本。
+目前 Rust 2018 正处于预览阶段，因此，您需要采取额外的步骤来选择加入。
+将此功能标志添加到您的<code>lib.rs</code>或<code>main.rs</code>以及任何示例中。如果你有一个项目的<code>examples</code>目录：</p>
 <pre><pre class="playpen"><code class="language-rust">
 # #![allow(unused_variables)]
 #![feature(rust_2018_preview)]
 #fn main() {
 #}</code></pre></pre>
-<p>This will enable the unstable features listed in the <a href="../unstable-feature-status.html">feature status</a>
-page. Note that some features require a miniumum of Rust 2018 and these features will
-require a Cargo.toml change to enable (described in the sections below). Also
-note that during the time the preview is available, we may continue to add/enable
-new features with this flag!</p>
-<p>For Rust 2018 edition preview 2, we're also testing a <a href="../rust-2018/module-system/path-clarity.html">new module path
-variant</a>, &quot;uniform paths&quot;,
-which we'd like to get further testing and feedback on.
-Please try it out, by adding the following to your <code>lib.rs</code> or <code>main.rs</code>:</p>
+<p>这将启用 <a href="../unstable-feature-status.html">特性状态</a> 页面中列出的不稳定功能。请注意，某些功能需要最小的 Rust 2018，这些功能需要 Cargo.toml 拥有更改权限才能启用（在下面的部分中描述）。
+另请注意，在预览可用期间，我们可能会继续使用此标志来添加/启用新功能！</p>
+<p>对于 Rust 2018 预览版2中，我们还测试了<a href="../rust-2018/module-system/path-clarity.html">新模块路径变体</a>，“统一路径”，我们想要获得进一步测试和反馈。
+请尝试将以下内容添加到<code>lib.rs</code>或<code>main.rs</code>中：</p>
 <pre><pre class="playpen"><code class="language-rust">
 # #![allow(unused_variables)]
 #![feature(rust_2018_preview, uniform_paths)]
 #fn main() {
 #}</code></pre></pre>
-<p>The release of Rust 2018 will stabilize one of the two module path variants and
-drop the other.</p>
-<a class="header" href="#fix-edition-compatibility-warnings" id="fix-edition-compatibility-warnings"><h2>Fix edition compatibility warnings</h2></a>
-<p>Next up is to enable compiler warnings about code which is incompatible with the
-new 2018 edition. This is where the handy <code>cargo fix</code> tool comes into the
-picture. To enable the compatibility lints for your project you run:</p>
+<p>Rust 2018 的发布时候将会选择两个模块路径变体中的一个，并放弃另一个。
+The release of Rust 2018 will stabilize one of the two module path variants and drop the other.</p>
+<a class="header" href="#a修复版本兼容性警告" id="a修复版本兼容性警告"><h2>修复版本兼容性警告</h2></a>
+<p>接下来是启用有关与新 2018 版本 不兼容的代码的编译器警告。 这是方便 <code>cargo fix</code> 这个工具进入图片的地方。 要为项目启用兼容性lints，请运行：</p>
 <pre><code class="language-shell">$ cargo fix --edition
 </code></pre>
-<p>If the nightly toolchain is not your default, you may need to run this command
-instead:</p>
+<p>如果 nightly 不是你的默认选择的话，你需要运行下面的这个命令：</p>
 <pre><code class="language-shell">$ cargo +nightly fix --edition
 </code></pre>
-<p>This will instruct Cargo to compile all targets in your project (libraries,
-binaries, tests, etc.) while enabling all Cargo features and prepare them for
-the 2018 edition. Cargo will likely automatically fix a number of files,
-informing you as it goes along.  Note that this does not enable any new Rust
-2018 features; it only makes sure your code is compatible with Rust 2018.</p>
-<p>If Cargo can't automatically fix everything it'll print out the remaining
-warnings. Continue to run the above command until all warnings have been solved.</p>
-<p>You can explore more about the <code>cargo fix</code> command with:</p>
+<p>这将指示 Cargo 编译项目中的所有目标（库，二进制文件，测试等），同时启用所有 Cargo 功能并为2018版本做好准备。
+Cargo 可能会自动修复一些文件，并在其发生时通知您。 请注意，这不会启用任何新的 Rust 2018 功能; 它只能确保您的代码与 Rust 2018 兼容。</p>
+<p>如果Cargo无法自动修复所有内容，它将打印出剩余的警告。继续运行上述命令，直到所有警告都已解决。</p>
+<p>你可以获取更多 <code>cargo fix</code> 信息，运行：</p>
 <pre><code class="language-shell">$ cargo fix --help
 </code></pre>
-<a class="header" href="#switch-to-the-next-edition" id="switch-to-the-next-edition"><h2>Switch to the next edition</h2></a>
-<p>Once you're happy with those changes, it's time to use the new edition.
-Add this to your <code>Cargo.toml</code>:</p>
+<a class="header" href="#a切换到下一个版本" id="a切换到下一个版本"><h2>切换到下一个版本</h2></a>
+<p>一旦您对这些更改感到满意，就可以使用新版本了。 将其添加到您的 <code>Cargo.toml</code>：</p>
 <pre><code class="language-toml">cargo-features = [&quot;edition&quot;]
 
 [package]
 edition = '2018'
 </code></pre>
-<p>That <code>cargo-features</code> line should go at the very top; and <code>edition</code> goes into
-the <code>[package]</code> section. As mentioned above, right now this is a nightly-only
-feature of Cargo, so you need to enable it for things to work.</p>
-<p>At this point, your project should compile with a regular old <code>cargo build</code>. If it does not, this is a bug! Please <a href="https://github.com/rust-lang/rust/issues/new">file an issue</a>.</p>
-<a class="header" href="#writing-idiomatic-code-in-a-new-edition" id="writing-idiomatic-code-in-a-new-edition"><h2>Writing idiomatic code in a new edition</h2></a>
-<p>Your crate has now entered the 2018 edition of Rust, congrats! Recall though
-that Editions in Rust signify a shift in idioms over time. While much old
-code will continue to compile it might be written with different idioms today.</p>
-<p>An optional next step you can take is to update your code to be idiomatic within
-the new edition. This is done with a different set of &quot;idiom lints&quot;. Like before
-we'll be using <code>cargo fix</code> to drive this process:</p>
+<p>那个 <code>cargo-features</code> 行应该排在最前面; <code>edition</code> 进入 <code>[package]</code> 部分。
+如上所述，现在这是 Cargo 的 nightly 特征，因此您需要启用它才能使其工作。</p>
+<p>此时，您的项目应该使用常规的<code>cargo build</code>进行编译。 如果没有，这是一个错误！ 请<a href="https://github.com/rust-lang/rust/issues/new">提交问题</a>。</p>
+<a class="header" href="#a在新版本中编写惯用代码" id="a在新版本中编写惯用代码"><h2>在新版本中编写惯用代码</h2></a>
+<p>你的 crate 现在已经进入了2018版的 Rust，恭喜！ 回想一下，Rust 中的 Editions 表示随着时间的推移，习惯用语的转变。
+虽然很多旧代码将继续编译，但今天可能会用不同的习惯用语编写。</p>
+<p>您可以采取的可选的后续步骤是将代码更新为新版本中的惯用语。
+这是通过一组不同的“习惯用语lints”完成的。 就像之前我们使用 <code>cargo fix</code> 来推动这个过程一样：</p>
 <pre><code class="language-shell">$ cargo fix --edition-idioms
 </code></pre>
-<p>Additionally like before, this is intended to be an <em>easy</em> step. Here <code>cargo fix</code> will automatically fix any lints it can, so you'll only get warnings for
-things that <code>cargo fix</code> couldn't fix. If you find it difficult to work through
-the warnings, that's a bug!</p>
-<p>Once you're warning-free with this command you're good to go.</p>
+<p>与之前一样，这是一个 <em>简单</em> 的步骤。
+在这里 <code>cargo fix</code> 将自动修复任何可能的lint，所以你只会得到 <code>cargo fix</code> 无法修复的情况下的警告。
+如果您发现难以完成警告，那就是一个错误！</p>
+<p>一旦你用这个命令警告没有了，你就可以继续了。</p>
 <blockquote>
-<p>The <code>--edition-idioms</code> flag applies only to the &quot;current crate&quot; if you want
-to run it against a workspace is necessary to use a workaround with
-<code>RUSTFLAGS</code> in order to execute it in all the workspace members.</p>
+<p><code>--edition-idioms</code> 标志仅适用于“当前 crate”，如果你想在工作空间运行它是必要的，使用 <code>RUSTFLAGS</code> 的解决方法，以便在所有工作区中执行它。</p>
 <pre><code class="language-shell">$ RUSTFLAGS='-Wrust_2018_idioms' cargo fix --all
 </code></pre>
 </blockquote>
-<p>Enjoy the new edition!</p>
+<p>享受新版本吧！</p>
 
                     </main>
 
@@ -281,12 +257,6 @@ to run it against a workspace is necessary to use a workaround with
 
         
 
-        
-        <script src="../searchindex.js" type="text/javascript" charset="utf-8"></script>
-        <script>
-            var path_to_root = "../";
-        </script>
-        
         
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
