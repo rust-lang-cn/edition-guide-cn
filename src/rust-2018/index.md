@@ -1,8 +1,4 @@
 # Rust 2018
-
-The edition system was created for the release of Rust 2018. The theme of Rust 2018
-is *productivity*. Rust 2018 improves upon Rust 2015 through new features,
-simpler syntax in some cases, a smarter borrow-checker, and a host of other things.
-These are all in service of the productivity goal. Rust 2015 was a foundation;
-Rust 2018 smooths off rough edges, makes writing code simpler and easier,
-and removes some inconsistencies.
+该版本系统是为 Rust 2018 的发布而创建的. Rust 2018 的主题是*生产力*。 
+Rust 2018 通过新功能，在某些情况下更简单的语法，更智能的借用检查器以及许多其他东西来改进 Rust 2015。
+这些都是为了提高生产力目标。 Rust 2015 是一个基础; Rust 2018 使粗糙边缘平滑，使编写代码更简单，更容易，并消除了一些不一致性。

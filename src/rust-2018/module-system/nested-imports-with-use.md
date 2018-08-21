@@ -1,9 +1,9 @@
-# Nested imports with `use`
+# 用 `use` 进行导入嵌套
 
 ![Minimum Rust version: 1.25](https://img.shields.io/badge/Minimum%20Rust%20Version-1.25-brightgreen.svg)
 
-A new way to write `use` statements has been added to Rust: nested import
-groups. If you’ve ever written a set of imports like this:
+在 Rust 中： 嵌套导入中添加了一种编写 `use` 语句的新方法。 
+如果您曾编写过这样的一组导入：
 
 ```rust
 use std::fs::File;
@@ -11,7 +11,7 @@ use std::io::Read;
 use std::path::{Path, PathBuf};
 ```
 
-You can now write this:
+可以这样写了：
 
 ```rust
 # mod foo {
@@ -32,4 +32,4 @@ use std::{
 # }
 ```
 
-This can reduce some repetition, and make things a bit more clear.
+这可以减少一些重复，并使事情更清晰。

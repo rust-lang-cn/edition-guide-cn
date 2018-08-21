@@ -1,6 +1,6 @@
-# Module system
+# 模块系统
 
-[path clarity changes]: path-clarity.md
+[路径清晰度变化]: path-clarity.md
 
-In this chapter of the guide, we discuss a few changes to the module system.
-The most notable of these are the [path clarity changes].
+在本指南的这一章中，我们将讨论模块系统的一些变化。 
+其中最值得注意的是 [路径清晰度变化]。

@@ -14,11 +14,11 @@
 ## Rust 2018
 
 - [Rust 2018](rust-2018/index.md)
-    - [Module system](rust-2018/module-system/index.md)
-      - [Raw identifiers](rust-2018/module-system/raw-identifiers.md)
-      - [Path clarity](rust-2018/module-system/path-clarity.md)
-      - [More visibility modifiers](rust-2018/module-system/more-visibility-modifiers.md)
-      - [Nested imports with `use`](rust-2018/module-system/nested-imports-with-use.md)
+    - [模块系统](rust-2018/module-system/index.md)
+      - [原始标识符](rust-2018/module-system/raw-identifiers.md)
+      - [路径清晰化](rust-2018/module-system/path-clarity.md)
+      - [更加可见的修饰符](rust-2018/module-system/more-visibility-modifiers.md)
+      - [用 `use` 进行导入嵌套](rust-2018/module-system/nested-imports-with-use.md)
     - [Error handling and panics](rust-2018/error-handling-and-panics/index.md)
       - [The `?` operator for easier error handling](rust-2018/error-handling-and-panics/the-question-mark-operator-for-easier-error-handling.md)
       - [`?` in `main` and tests](rust-2018/error-handling-and-panics/question-mark-in-main-and-tests.md)
