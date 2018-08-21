@@ -1,13 +1,10 @@
-# `?` in `main` and tests
-
+# `?` 在 `main` 和 tests 中
 ![Minimum Rust version: 1.26](https://img.shields.io/badge/Minimum%20Rust%20Version-1.26-brightgreen.svg)
 
-Rust's error handling revolves around returning `Result<T, E>` and using `?`
-to propagate errors. For those who write many small programs and, hopefully,
-many tests, one common paper cut has been mixing entry points such as `main`
-and `#[test]`s with error handling.
+Rust的错误处理围绕返回 `Result <T，E>` 并使用 `?` 传播错误。 
+对于那些编写许多小程序并且希望进行许多测试的人来说，更关注于那些复杂的入口，例如`main`和`#[test]`中的错误处理。
 
-As an example, you might have tried to write:
+举个例子，你将尝试这样写：
 
 ```rust,ignore
 use std::fs::File;
@@ -17,9 +14,7 @@ fn main() {
 }
 ```
 
-Since `?` works by propagating the `Result` with an early return to the
-enclosing function, the snippet above does not work, and results today
-in the following error:
+因为 `?` 通过处理 `Result` 并提前返回函数来工作，所以上面的代码不起作用，并且导致以下错误：
 
 ```rust,ignore
 error[E0277]: the `?` operator can only be used in a function that returns `Result`
@@ -33,7 +28,7 @@ error[E0277]: the `?` operator can only be used in a function that returns `Resu
   = note: required by `std::ops::Try::from_error`
 ```
 
-To solve this problem in Rust 2015, you might have written something like:
+在 Rust 2015 中，处理这种问题，需要这样：
 
 ```rust
 // Rust 2015
@@ -54,12 +49,9 @@ fn main() {
 }
 ```
 
-However, in this case, the `run` function has all the interesting logic and
-`main` is just boilerplate. The problem is even worse for `#[test]`s, since
-there tend to be a lot more of them.
+但是，在这种情况下，`run` 函数具有所有有趣的逻辑，而 `main` 只是样板。 问题更糟糕的是 `#[test]`，因为它们往往会有更多这种情况。
 
-In Rust 2018 you can instead let your `#[test]`s and `main` functions return
-a `Result`:
+在 Rust 2018 中，你可以使得你的 `#[test]` 和 `main` 函数返回一个 `Result`：
 
 ```rust,no_run
 // Rust 2018
@@ -73,15 +65,12 @@ fn main() -> Result<(), std::io::Error> {
 }
 ```
 
-In this case, if say the file doesn't exist and there is an `Err(err)` somewhere,
-then `main` will exit with an error code (not `0`) and print out a `Debug`
-representation of `err`.
+在这种情况下，如果说文件不存在并且某处有一个 `Err(err)`，那么 `main` 将以错误代码（不是`0`）退出并打印出 `Debug` 表示 `err`。
 
-## More details
+## 更多的细节
 
-Getting `-> Result<..>` to work in the context of `main` and `#[test]`s is not
-magic. It is all backed up by a `Termination` trait which all valid return
-types of `main` and testing functions must implement. The trait is defined as:
+使 ` - > Result <..>` 在 `main` 和 `#[test]` 的上下文中工作并不神奇。
+它全部由 `Termination` 特征支持，所有有效的返回类型的 `main` 和测试函数必须实现。 特征定义为：
 
 ```rust
 pub trait Termination {
@@ -89,10 +78,9 @@ pub trait Termination {
 }
 ```
 
-When setting up the entry point for your application, the compiler will use this
-trait and call `.report()` on the `Result` of the `main` function you have written.
+在为应用程序设置入口点时，编译器将使用此特征并在您编写的 `main` 函数的 `Result` 上调用 `.report()`。
 
-Two simplified example implementations of this trait for `Result` and `()` are:
+`Result` 和 `()` 的这个特性的两个简化示例实现是：
 
 ```rust
 # #![feature(process_exitcode_placeholder, termination_trait_lib)]
@@ -122,8 +110,7 @@ impl<E: fmt::Debug> Termination for Result<(), E> {
 }
 ```
 
-As you can see in the case of `()`, a success code is simply returned.
-In the case of `Result`, the success case delegates to the implementation for
-`()` but prints out an error message and a failure exit code on `Err(..)`.
+正如您在 `()` 中看到的那样，只返回成功代码。 
+在 `Result` 的情况下，成功的话交给 `()` 来执行，错误的话，交给 `Err(..)`，打印出错误消息并退出代码。
 
-To learn more about the finer details, consult either [the tracking issue](https://github.com/rust-lang/rust/issues/43301) or [the RFC](https://github.com/rust-lang/rfcs/blob/master/text/1937-ques-in-main.md).
+要了解有关更细节的信息，请参阅[跟踪问题](https://github.com/rust-lang/rust/issues/43301) 或者 [the RFC](https://github.com/rust-lang/rfcs/blob/master/text/1937-ques-in-main.md).

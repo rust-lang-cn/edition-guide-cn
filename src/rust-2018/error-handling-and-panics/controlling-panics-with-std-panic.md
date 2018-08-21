@@ -1,9 +1,8 @@
-# Controlling panics with `std::panic`
+# 通过 `std::panic` 处理崩溃
 
 ![Minimum Rust version: 1.9](https://img.shields.io/badge/Minimum%20Rust%20Version-1.9-brightgreen.svg)
 
-There is a `std::panic` module, which includes methods for halting the
-unwinding process started by a panic:
+有一个 `std::panic` 模块，其中包含崩溃，停止和启动的展开过程的方法：
 
 ```rust
 use std::panic;
@@ -19,34 +18,23 @@ let result = panic::catch_unwind(|| {
 assert!(result.is_err());
 ```
 
-In general, Rust distinguishes between two ways that an operation can fail:
+通常，Rust区分操作失败的两种方式：
 
-- Due to an *expected problem*, like a file not being found.
-- Due to an *unexpected problem*, like an index being out of bounds for an array.
-
-Expected problems usually arise from conditions that are outside of your
-control; robust code should be prepared for anything its environment might throw
-at it. In Rust, expected problems are handled via [the `Result` type][result],
-which allows a function to return information about the problem to its caller,
-which can then handle the error in a fine-grained way.
+- 由于 *预期的问题*，就像找不到文件一样。
+- 由于 *意外问题*，就像索引超出数组范围一样。
 
 [result]: http://doc.rust-lang.org/std/result/index.html
 
-Unexpected problems are *bugs*: they arise due to a contract or assertion being
-violated. Since they are unexpected, it doesn't make sense to handle them in a
-fine-grained way. Instead, Rust employs a "fail fast" approach by *panicking*,
-which by default unwinds the stack (running destructors but no other code) of
-the thread which discovered the error. Other threads continue running, but will
-discover the panic any time they try to communicate with the panicked thread
-(whether through channels or shared memory). Panics thus abort execution up to
-some "isolation boundary", with code on the other side of the boundary still
-able to run, and perhaps to "recover" from the panic in some very coarse-grained
-way. A server, for example, does not necessarily need to go down just because of
-an assertion failure in one of its threads.
+预期的问题通常来自您无法控制的情况; 应该为其环境可能抛出的任何内容准备健壮的代码。
+在Rust中，预期的问题通过 [`Result`类型][result] 来处理，它允许函数将有关问题的信息返回给调用者，然后调用者可以以细粒度的方式处理错误。
 
-It's also worth noting that programs may choose to *abort* instead of unwind,
-and so catching panics may not work. If your code relies on `catch_unwind`, you
-should add this to your Cargo.toml:
+意外问题是*错误*：它们是由于合同或断言被违反而产生的。由于它们是意料之外的，因此以细粒度的方式处理它们是没有意义的。
+相反，Rust通过*崩溃*采用“快速失败”方法，默认情况下解除发现错误的线程的堆栈（运行析构函数但没有其他代码）。
+其他线程继续运行，但每当他们尝试与崩溃线程（无论是通过通道还是共享内存）进行通信时，都会发现崩溃。
+因此，崩溃将执行中止到一些“隔离边界”，边界另一侧的代码仍然可以运行，并且可能以某种非常粗粒度的方式从崩溃中“恢复”。
+例如，服务器不一定因为其中一个线程中的断言失败而需要关闭。
+
+同样值得注意的是，程序可能会选择*中止*而不是放松，因此捕捉崩溃可能无效。如果你的代码依赖于 `catch_unwind`，你应该将它添加到你的Cargo.toml：
 
 ```toml
 [profile.debug]
@@ -56,25 +44,18 @@ panic = "unwind"
 panic = "unwind"
 ```
 
-If any of your users choose to abort, they'll get a compile-time failure.
+如果您的任何用户选择中止，他们将遇到编译时失败。
 
-The `catch_unwind` API offers a way to introduce new isolation boundaries
-*within a thread*. There are a couple of key motivating examples:
+`catch_unwind` API提供了一种在线程中*引入新的隔离边界*的方法。 有几个关键的刺激例子：
 
-* Embedding Rust in other languages
-* Abstractions that manage threads
-* Test frameworks, because tests may panic and you don't want that to kill the test runner
+* 在其他语言中嵌入 Rust
+* 管理线程的抽象
+* 测试框架，因为测试可能会引起崩溃，你不希望它会杀死测试运行器
 
-For the first case, unwinding across a language boundary is undefined behavior,
-and often leads to segfaults in practice. Allowing panics to be caught means
-that you can safely expose Rust code via a C API, and translate unwinding into
-an error on the C side.
+对于第一种情况，跨语言边界展开是未定义的行为，并且经常导致实践中的段错误。
+允许捕获崩溃意味着您可以通过 C API 安全地公开 Rust 代码，并将展开转换为C侧的错误。
 
-For the second case, consider a threadpool library. If a thread in the pool
-panics, you generally don't want to kill the thread itself, but rather catch the
-panic and communicate it to the client of the pool. The `catch_unwind` API is
-paired with `resume_unwind`, which can then be used to restart the panicking
-process on the client of the pool, where it belongs.
+对于第二种情况，请考虑一个线程池库。如果池中的线程发生混乱，您通常不希望杀死线程本身，而是抓住崩溃并将其传递给池的客户端。
+`catch_unwind` API 与 `resume_unwind` 配对，然后可以用它来重新启动它所属的池的客户端上的崩溃过程。
 
-In both cases, you're introducing a new isolation boundary within a thread, and
-then translating the panic into some other form of error elsewhere.
+在这两种情况下，您都在一个线程中引入了一个新的隔离边界，然后将崩溃转换为其他地方的其他形式的错误。
