@@ -1,30 +1,27 @@
-# Cargo workspaces for multi-package projects
+# Cargo workspaces 用于有多个子包的项目
 
 ![Minimum Rust version: 1.12](https://img.shields.io/badge/Minimum%20Rust%20Version-1.12-brightgreen.svg)
 
-Cargo used to have two levels of organization:
+Cargo 曾经有两个组织层次：
 
-* A *package* contains one or more crates
-* A crate has one or more modules
+* 一个 *package* 有一个或多个 crates
+* 一个 *crate* 有一个或多个 modules
 
-Cargo now has an additional level:
+Cargo 现在有一个额外的层次：
 
-* A *workspace* contains one or more packages
+* 一个 *workspace* 包含一个或多个 packages
 
-This can be useful for larger projects. For example, [the `futures`
-respository] is a *workspace* that contains many related packages:
+[the `futures` package]: https://github.com/rust-lang-nursery/futures-rs
+
+这对于大型项目非常有用。例如，[the `futures` package] 是一个 *workspace*，包含许多相关的包：
 
 * futures
 * futures-util
 * futures-io
 * futures-channel
 
-and more.
+还有其他。
 
-[the `futures` package]: https://github.com/rust-lang-nursery/futures-rs
+Workspaces 允许单独开发这些包，但它们共享一组依赖项，因此只有单个 target 目录和单个 `Cargo.lock`。
 
-Workspaces allow these packages to be developed individually, but they share
-a single set of dependencies, and therefore have a single target directory
-and a single `Cargo.lock`.
-
-For more details about workspaces, please see [the Cargo documentation](https://doc.rust-lang.org/stable/cargo/reference/manifest.html#the-workspace-section).
+更多有关 workspaces, 请查阅 [the Cargo documentation](https://doc.rust-lang.org/stable/cargo/reference/manifest.html#the-workspace-section).

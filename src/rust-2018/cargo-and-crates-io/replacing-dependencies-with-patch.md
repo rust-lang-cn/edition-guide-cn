@@ -1,23 +1,19 @@
-# Replacing dependencies with patch
+# patch 替换依赖
 
 ![Minimum Rust version: 1.21](https://img.shields.io/badge/Minimum%20Rust%20Version-1.21-brightgreen.svg)
 
-The `[patch]` section of your `Cargo.toml` can be used when you want to
-override certain parts of your dependency graph.
+当你想要覆盖依赖图的某些部分时，可以使用你的 `Cargo.toml` 的 `[patch]` 部分。
 
-> Cargo has a `[replace]` feature that is similar; while we don't intend to deprecate
-> or remove `[replace]`, you should prefer `[patch]` in all circumstances.
+> cargo 有一个类似的 `[replace]` 功能; 虽然我们不打算弃用或删除 `[replace]`，但在任何情况下都应该更喜欢 `[patch]`。
 
-So what’s it look like? Let’s say we have a Cargo.toml that looks like this:
+那么它看起来像什么？ 假设我们有一个看起来像这样的 Cargo.toml：
 
 ```toml
 [dependencies]
 foo = "1.2.3"
 ```
 
-In addition, our `foo` package depends on a `bar` crate, and we find a bug in `bar`.
-To test this out, we’d download the source code for `bar`, and then update our
-`Cargo.toml`:
+另外，我们的 `foo` 包依赖于 `bar` 包，我们在 `bar` 中发现了一个错误。为了测试这个，我们下载了 `bar` 的源代码，然后更新我们的 `Cargo.toml`：
 
 ```toml
 [dependencies]
@@ -27,9 +23,6 @@ foo = "1.2.3"
 bar = { path = '/path/to/bar' }
 ```
 
-Now, when you `cargo build`, it will use the local version of `bar`, rather
-than the one from crates.io that `foo` depends on. You can then try out your
-changes, and fix that bug!
+现在，当你 `cargo build` 时，它将使用本地版本的 `bar`，而不是来自 crates.io 的 `foo` 所依赖的版本。然后，您可以尝试更改，并修复该错误！
 
-For more details, see [the documentation for
-`patch`](https://doc.rust-lang.org/cargo/reference/manifest.html#the-patch-section).
+更多细节，查阅 [the documentation for `patch`](https://doc.rust-lang.org/cargo/reference/manifest.html#the-patch-section).

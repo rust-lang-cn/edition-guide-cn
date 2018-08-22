@@ -1,18 +1,10 @@
-# `cargo new` defaults to a binary project
+# `cargo new` 创建一个默认可执行项目
 
 ![Minimum Rust version: 1.25](https://img.shields.io/badge/Minimum%20Rust%20Version-1.25-brightgreen.svg)
 
-`cargo new` will now default to generating a binary, rather than a library.
-We try to keep Cargo’s CLI quite stable, but this change is important, and is
-unlikely to cause breakage.
+`cargo new` 现在默认生成二进制文件，而不是库。我们试图保持 Cargo 的 CLI 非常稳定，但这种变化很重要，不太可能导致破损。
 
-For some background, cargo new accepts two flags: `--lib`, for creating
-libraries, and `--bin`, for creating binaries, or executables. If you don’t
-pass one of these flags, it used to default to `--lib`. At the time, we made
-this decision because each binary (often) depends on many libraries, and so
-we thought the library case would be more common. However, this is incorrect;
-each library is depended upon by many binaries. Furthermore, when getting
-started, what you often want is a program you can run and play around with.
-It’s not just new Rustaceans though; even very long-time community members
-have said that they find this default surprising. As such, we’ve changed it,
-and it now defaults to `--bin`.
+对于某些背景，cargo new 接受两个标志： `--lib` 用于创建库，`--bin` 用于创建二进制文件或可执行文件。 如果你没有传递其中一个标志，它曾经默认为 `--lib`。
+当时，我们做出了这个决定，因为每个二进制文件（通常）都依赖于许多库，因此我们认为库案例会更常见。但是，这是不正确的; 每个包都依赖于许多二进制文件。
+此外，在开始使用时，你经常需要的是一个可以运行和使用的程序。而且，不仅仅是新 Rustaceans们， 甚至是很长时间的社区成员都说他们发现这个默认值令人惊讶。
+因此，我们已经改变它，它现在默认为 `--bin`。
