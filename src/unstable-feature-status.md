@@ -1,4 +1,4 @@
-# Unstable feature status
+# 不稳定的特性状态
 
 ## Language
 
@@ -41,10 +41,8 @@
 | [Import macros via `use`] | Unstable; [tracking issue][issue#35896] | ? |
 | [Module system path changes] | Unstable; [tracking issue][issue#44660] | 2018 |
 
-While some of these features are already available in Rust 2015, they are tracked here
-because they are being promoted as part of the Rust 2018 edition.  Accordingly, they
-will be discussed in subsequent sections of this guide book. The features marked as
-"Shipped" are all available today in stable Rust, so you can start using them right now!
+虽然 Rust 2015 中已经提供了其中一些功能，但是它们在这里被跟踪，因为它们是作为 Rust 2018 版本的一部分进行推广的。
+因此，它们将在本指南的后续章节中讨论。标记为 “Shipped” 的功能现在都可以在稳定的 Rust 中使用，因此您可以立即开始使用它们！
 
 ## Standard library
 
@@ -81,5 +79,4 @@ will be discussed in subsequent sections of this guide book. The features marked
 | [TRPL] | Updated as features stabilize |
 
 ## Web site
-
-The visual design is being finalized, and early rounds of content brainstorming are complete.
+视觉设计正在最终确定，早期的内容头脑风暴已经完成。

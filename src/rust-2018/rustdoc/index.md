@@ -2,5 +2,4 @@
 
 [cf]: documentation-tests-can-now-compile-fail.md
 
-In this chapter of the guide, we discuss a few improvements to `rustdoc`.
-A notable addition to it was [that documentation tests can now compile-fail][cf].
+在本章节中，我们将讨论 `rustdoc` 的改进，特别关注 [文档测试现在可以编译失败][cf]。

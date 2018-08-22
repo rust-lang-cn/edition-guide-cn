@@ -1,20 +1,12 @@
-# Global allocators
+# 全局分配符
 
 ![Minimum Rust version: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-brightgreen.svg)
 
-Allocators are the way that programs in Rust obtain memory from the system at
-runtime. Previously, Rust did not allow changing the way memory is obtained,
-which prevented some use cases. On some platforms, this meant using jemalloc,
-on others, the system allocator, but there was no way for users to control
-this key component. With 1.28.0, the `#[global_allocator]` attribute is now
-stable, which allows Rust programs to set their allocator to the system
-allocator, as well as define new allocators by implementing the `GlobalAlloc`
-trait.
+分配器是 Rust 中的程序在运行时从系统获取内存的方式。以前，Rust 不允许改变获取内存的方式，这阻止了一些用例。
+在某些平台上，这意味着在其他平台上使用 jemalloc，系统分配器，但用户无法控制此关键组件。 
+在1.28中，`#[global_allocator]` 属性现在是稳定的，它允许 Rust 程序将它们的分配器设置为系统分配器，并通过实现 `GlobalAlloc` 特性来定义新的分配器。
 
-The default allocator for Rust programs on some platforms is jemalloc. The
-standard library now provides a handle to the system allocator, which can be
-used to switch to the system allocator when desired, by declaring a static
-and marking it with the `#[global_allocator]` attribute.
+某些平台上 Rust 程序的默认分配器是 jemalloc。标准库现在提供了系统分配器的句柄，可以在需要时通过声明静态并使用 `#[global_allocator]` 属性标记它来切换到系统分配器。
 
 ```rust
 use std::alloc::System;
@@ -29,7 +21,6 @@ fn main() {
 }
 ```
 
-However, sometimes you want to define a custom allocator for a given
-application domain. This is also relatively easy to do by implementing the
-`GlobalAlloc` trait. You can read more about how to do this in [the
-documentation](https://doc.rust-lang.org/std/alloc/trait.GlobalAlloc.html).
+但是，有时您希望为给定的应用程序域定义自定义分配器。通过实现 `GlobalAlloc` 特性，这也相对容易。
+您可以在 [the documentation](https://doc.rust-lang.org/std/alloc/trait.GlobalAlloc.html)。
+

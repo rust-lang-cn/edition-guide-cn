@@ -1,37 +1,18 @@
-# New editions of the "the book"
+# 新版本的 "the book"
 
-![Minimum Rust version: 1.18](https://img.shields.io/badge/Minimum%20Rust%20Version-1.18-red.svg) for drafts of the second edition
+![Minimum Rust version: 1.18](https://img.shields.io/badge/Minimum%20Rust%20Version-1.18-red.svg) 第二版的草稿
 
-![Minimum Rust version: 1.26](https://img.shields.io/badge/Minimum%20Rust%20Version-1.26-brightgreen.svg) for the final version of the second edition
+![Minimum Rust version: 1.26](https://img.shields.io/badge/Minimum%20Rust%20Version-1.26-brightgreen.svg) 第二版的最后一版
 
-![Minimum Rust version: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-red.svg) for drafts of the 2018 edition
+![Minimum Rust version: 1.28](https://img.shields.io/badge/Minimum%20Rust%20Version-1.28-red.svg) 2018版的草稿
 
-We've distributed a copy of "The Rust Programming Language," affectionately
-nicknamed "the book", with every version of Rust since Rust 1.0.
+我们分发了一份 “Rust编程语言”，亲切地昵称为 “书”，以及 Rust 自 Rust 1.0 以来的每个版本。
 
-However, because it was written before Rust 1.0, it started showing its age.
-Many parts of the book are vague, because it was written before the true
-details were nailed down for the 1.0 release. It didn't do a fantastic job of
-teaching lifetimes.
+但是，因为它是在 Rust 1.0 之前编写的，所以它开始显示它的年龄。本书的许多部分都含糊不清，因为它是在真正的细节被确定为1.0版本之前编写的。它在教学生涯中没有做出出色的工作。
 
-Starting with Rust 1.18, we shipped drafts of a second edition of the book.
-The final version was shipped with Rust 1.26. The new edition is a complete
-re-write from the ground up, using the last two years of knowledge we’ve
-gained from teaching people Rust. You’ll find brand-new explanations for a
-lot of Rust’s core concepts, new projects to build, and all kinds of other
-good stuff. Please [check it
-out](https://doc.rust-lang.org/book/second-edition/index.html) and let us
-know what you think!
+从 Rust 1.18 开始，我们发布了本书第二版的草稿。 最终版本随 Rust 1.26 一起提供。新版本是从头开始的完整重写，使用我们从 Rust 中获得的最近两年的知识。
+你会发现很多 Rust 的核心概念，要构建的新项目以及各种其他好东西的全新解释。请[查看][check it out](https://doc.rust-lang.org/book/second-edition/index.html) 并告诉我们你的想法！
 
-You can also purchase [a dead-tree version from No Starch
-Press](https://nostarch.com/Rust). Now that the print version has shipped,
-the second edition is frozen.
+您也可以从[Starch Press](https://nostarch.com/Rust)购买。现在印刷版已发货，第二版已冻结。
 
-The names are a bit confusing though, because the "second edition" of the
-book is the first printed edition of the book. As such, we decided that newer
-editions of the book will correspond with newer editions of Rust itself, and
-so starting with 1.28, we've been shipping drafts of the next version, [the
-2018 Edition](https://doc.rust-lang.org/book/2018-edition/index.html). It's
-still pretty close to the second edition, but contains information about
-newer features since the book's content was frozen. We'll be continuing to
-update this edition until we decide to print a second edition in paper.
+这些名字有点令人困惑，因为这本书的“第二版”是该书的第一版。因此，我们认为本书的新版本将与 Rust 本身的新版本相对应，因此从 1.28 开始，我们一直在发送下一版本的草案，[2018年版](https://doc.rust-lang.org/book/2018-edition/index.html)。它仍然非常接近第二版，但包含有关新书功能的信息，因为该书的内容已被冻结。我们将继续更新此版本，直到我们决定在纸上打印第二版。
