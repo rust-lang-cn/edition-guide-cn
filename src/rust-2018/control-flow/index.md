@@ -1,6 +1,5 @@
-# Control flow
+# 流程控制
 
 [async_await]: async-await-for-easier-concurrency.md
 
-In this chapter of the guide, we discuss a few improvements to control flow.
-The most notable of these *will* be [`async` and `await`][async_await].
+在本章节中，我们将讨论流程控制的改进，更多的关注点在 [`async` 和 `await`][async_await]。

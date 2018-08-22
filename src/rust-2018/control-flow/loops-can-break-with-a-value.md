@@ -1,8 +1,8 @@
-# `loop`s can break with a value
+# `loop` 可以 break 并携带返回值
 
 ![Minimum Rust version: 1.19](https://img.shields.io/badge/Minimum%20Rust%20Version-1.19-brightgreen.svg)
 
-`loop`s can now break with a value:
+`loop` 可以 break 并携带返回值
 
 ```rust
 // old code
@@ -17,10 +17,7 @@ loop {
 let x = loop { break 7; };
 ```
 
-Rust has traditionally positioned itself as an “expression oriented
-language”, that is, most things are expressions that evaluate to a value,
-rather than statements. `loop` stuck out as strange in this way, as it was
-previously a statement.
+Rust 传统上将自己定位为“面向表达式的语言”，也就是说，大多数事物都是评估价值而不是陈述表达。 
+`loop` 以这种方式突然变得奇怪，因为它之前是一个声明。
 
-For now, this only applies to `loop`, and not things like `while` or `for`.
-It's not clear yet, but we may add this to those in the future.
+现在，这只适用于 `loop`，而不适用于 `while` 或 `for`。 目前尚不清楚，但我们可能会将此添加到未来。

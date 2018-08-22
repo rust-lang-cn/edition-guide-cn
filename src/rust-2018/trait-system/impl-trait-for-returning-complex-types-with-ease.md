@@ -1,10 +1,8 @@
-# `impl Trait` for returning complex types with ease
+# `impl Trait` 轻松返回复杂的类型
 
 ![Minimum Rust version: 1.26](https://img.shields.io/badge/Minimum%20Rust%20Version-1.26-brightgreen.svg)
 
-`impl Trait` is the new way to specify unnamed but concrete types that
-implement a specific trait. There are two places you can put it: argument
-position, and return position.
+`impl Trait` 是指定实现特定特征的未命名但有具体类型的新方法。 你可以把它放在两个地方：参数位置和返回位置。
 
 ```rust,ignore
 trait Trait {}
@@ -18,10 +16,8 @@ fn foo() -> impl Trait {
 }
 ```
 
-## Argument Position
-
-In argument position, this feature is quite simple. These two forms are
-almost the same:
+## 参数位置
+在参数位置上，这个特性是十分简单的，下面这两种写法几乎相同：
 
 ```rust,ignore
 trait Trait {}
@@ -33,24 +29,16 @@ fn foo(arg: impl Trait) {
 }
 ```
 
-That is, it's a slightly shorter syntax for a generic type parameter. It
-means, "`arg` is an argument that takes any type that implements the `Trait`
-trait."
+也就是说，它是泛型类型参数的简短的语法。这意味着，“ `arg` 是一个参数，它可以是实现了 `Trait` 特征的任何类型。”
 
-However, there's also an important technical difference between `T: Trait`
-and `impl Trait` here. When you write the former, you can specify the type of
-`T` at the call site with turbo-fish syntax as with `foo::<usize>(1)`. In the
-case of `impl Trait`, if it is used anywhere in the function definition, then
-you can't use turbo-fish at all. Therefore, you should be mindful that
-changing both from and to `impl Trait` can constitute a breaking change for
-the users of your code.
+但是，在技术上，`T: Trait` 和 `impl Trait` 有着一个很重要的不同点。
+当你编写前者时，可以使用turbo-fish语法在调用的时候指定`T`的类型，如 `foo::<usize>(1)`。 
+在 `impl Trait` 的情况下，只要它在函数定义中使用了，不管什么地方，都不能再使用turbo-fish。 
+因此，您应该注意，更改两者和切换到 `impl Trait` 都会对代码的用户构成重大变化。
 
-## Return Position
-
-In return position, this feature is more interesting. It means "I am
-returning some type that implements the `Trait` trait, but I'm not going to
-tell you exactly what the type is." Before `impl Trait`, you could do this
-with trait objects:
+## 返回参数
+在返回位置，此功能更有趣。这意味着“我正在返回一些实现了 `Trait` 特征的类型，但我不打算告诉你究竟是什么类型。” 
+在 `impl Trait` 之前，你可以用特征对象做到这一点：
 
 ```rust
 trait Trait {}
@@ -62,13 +50,11 @@ fn returns_a_trait_object() -> Box<dyn Trait> {
 }
 ```
 
-However, this has some overhead: the `Box<T>` means that there's a heap
-allocation here, and this will use dynamic dispatch. See the `dyn Trait`
-section for an explanation of this syntax. But we only ever return one
-possible thing here, the `Box<i32>`. This means that we're paying for dynamic
-dispatch, even though we don't use it!
+但是，这会产生一些开销： `Box <T>` 表示这里有堆分配，这将使用动态分配。
+有关此语法的说明，请参阅 `dyn Trait` 部分。 但是我们在这里只返回一个可能的东西，即 `Box <i32>`。
+这意味着我们即使我们不使用动态分配，但是依旧为它而付出了代价！
 
-With `impl Trait`, the code above could be written like this:
+使用 `impl Trait`，上面的代码如下：
 
 ```rust
 trait Trait {}
@@ -80,20 +66,16 @@ fn returns_a_trait_object() -> impl Trait {
 }
 ```
 
-Here, we have no `Box<T>`, no trait object, and no dynamic dispatch. But we
-still can obscure the `i32` return type.
+在这里，我们没有 `Box <T>`，没有特征对象，也没有动态分配。但我们仍然可以实现 `i32` 的返回类型。
 
-With `i32`, this isn't super useful. But there's one major place in Rust
-where this is much more useful: closures.
+使用 `i32`，这看起来并不是非常有用。但 Rust 中有一个主要运用的地方，它更有用： 闭包。
 
-### `impl Trait` and closures
+### `impl Trait` 和闭包
 
-> If you need to catch up on closures, check out [their chapter in the
-> book](https://doc.rust-lang.org/book/second-edition/ch13-01-closures.html).
+> 如果你想要了解闭包，参阅 [their chapter in the book](https://doc.rust-lang.org/book/second-edition/ch13-01-closures.html).
 
-In Rust, closures have a unique, un-writable type. They do implement the `Fn`
-family of traits, however. This means that previously, the only way to return
-a closure from a function was to use a trait object:
+在 Rust 中，闭包具有独特的，不可写的类型。然而，他们确实实现了 `Fn` 系列的特征。
+这意味着，在以前，从函数处返回闭包的唯一方法是，使用trait对象：
 
 ```rust
 fn returns_closure() -> Box<dyn Fn(i32) -> i32> {
@@ -101,8 +83,7 @@ fn returns_closure() -> Box<dyn Fn(i32) -> i32> {
 }
 ```
 
-You couldn't write the type of the closure, only use the `Fn` trait. That means
-that the trait object is necessary. However, with `impl Trait`:
+你不能写明闭包的类型，仅仅是使用 `Fn` 特性。这意味着特征对象是必须的，但是，利用 `impl Trait` 呢：
 
 ```rust
 fn returns_closure() -> impl Fn(i32) -> i32 {
@@ -110,63 +91,45 @@ fn returns_closure() -> impl Fn(i32) -> i32 {
 }
 ```
 
-We can now return closures by value, just like any other type!
+我们现在可以直接返回闭包类型，就像其他的返回值那样！
 
-## More details
+## 更多的细节
+以上是你需要了解和使用 `impl Trait` 的所有内，但是还有一些更细微的细节： 类型参数和参数位置 `impl Trait` 的普遍性（普遍量化的类型）。
+同时，`impl Trait` 在返回位置是存在的（存在量化的类型）。 好吧，也许这有点太行话了。 我们退一步吧。
 
-The above is all you need to know to get going with `impl Trait`, but for
-some more nitty-gritty details: type parameters and `impl Trait` in argument
-position are universals (universally quantified types). Meanwhile, `impl
-Trait` in return position are existentials (existentially quantified types).
-Okay, maybe that's a bit too jargon-heavy. Let's step back.
-
-Consider this function:
+考虑下面这个函数:
 
 ```rust,ignore
 fn foo<T: Trait>(x: T) {
 ```
 
-When you call it, you set the type, `T`. "you" being the caller here. This
-signature says "I accept any type that implements Trait." ("any type" ==
-universal in the jargon)
+当你调用它时，你设置类型，`T`。 “你”是这里的调用者。 这个签名说“我接受任何实现Trait的类型”。（“任何类型” == 行话中的*通用*）
 
-This version:
+这个版本:
 
 ```rust,ignore
 fn foo<T: Trait>() -> T {
 ```
-
-is similar, but also different. You, the caller, provide the type you want,
-`T`, and then the function returns it. You can see this in Rust today with
-things like parse or collect:
+相似但是有些不同，你这个调用者，提供一个你想要的返回类型 `T`, 你可以看一下现在 Rust 中的 parse 和 collect :
 
 ```rust,ignore
 let x: i32 = "5".parse()?;
 let x: u64 = "5".parse()?;
 ```
 
-Here, `.parse` has this signature:
+这里， `.parse` 有如下的签名：
 
 ```rust,ignore
 pub fn parse<F>(&self) -> Result<F, <F as FromStr>::Err> where
     F: FromStr,
 ```
 
-Same general idea, though with a result type and `FromStr` has an associated
-type... anyway, you can see how `F` is in the return position here. So you
-have the ability to choose.
+如你所想，虽然结果类型和 `FromStr` 有一个相关的类型... 无论如何，你可以看到 `F` 在这里的返回位置。所以你有能力去选择了。
 
-With `impl Trait`, you're saying "hey, some type exists that implements this
-trait, but I'm not gonna tell you what it is." ("existential" in the jargon,
-"some type exists"). So now, the caller can't choose, and the function itself
-gets to choose. If we tried to define parse with `Result<impl F,...` as the
-return type, it wouldn't work.
+使用 `impl Trait`，你会说“嘿，有些类型存在实现这个特性，但我不会告诉你它是什么。” （术语中的“存在主义”，“某种类型存在”）。
+所以现在，调用者无法选择，函数本身可以选择。如果我们尝试使用 `Result <impl F，...` 定义解析作为返回类型，它将无效。
 
-### Using `impl Trait` in more places
-
-As previously mentioned, as a start, you will only be able to use `impl Trait`
-as the argument or return type of a free or inherent function. However,
-`impl Trait` can't be used inside implementations of traits, nor can it be
-used as the type of a let binding or inside a type alias. Some of these
-restrictions will eventually be lifted. For more information, see the
-[tracking issue on `impl Trait`](https://github.com/rust-lang/rust/issues/34511).
+### 使用 `impl Trait` 在更多的地方
+如前所述，作为一个开始，您将只能使用 `impl Trait` 作为自由或固有函数的参数或返回类型。
+但是，现在 `impl Trait` 不能在traits的实现中使用，也不能用作let绑定的类型或类型别名。未来其中一些限制将被取消。
+获取更多的信息，查看[tracking issue on `impl Trait`](https://github.com/rust-lang/rust/issues/34511).

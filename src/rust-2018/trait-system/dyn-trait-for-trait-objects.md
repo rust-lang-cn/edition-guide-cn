@@ -1,13 +1,13 @@
-# `dyn Trait` for trait objects
+# `dyn Trait` trait 对象
 
 ![Minimum Rust version: 1.27](https://img.shields.io/badge/Minimum%20Rust%20Version-1.27-brightgreen.svg)
 
-The `dyn Trait` feature is the new syntax for using trait objects. In short:
+`dyn Trait` 是使用 trait 对象的新语法，简而言之：
 
 * `Box<Trait>` becomes `Box<dyn Trait>`
 * `&Trait` and `&mut Trait` become `&dyn Trait` and `&mut dyn Trait`
 
-And so on. In code:
+因此，代码中:
 
 ```rust
 trait Trait {}
@@ -25,18 +25,13 @@ fn function2() -> Box<dyn Trait> {
 }
 ```
 
-That's it!
+这就是了！
 
-## More details
+## 更多细节
+仅仅使用特征对象的特征名其实是个糟糕的决定。目前的语法通常含糊不清，即使对于老一批人来来说也是如此，
+而且竟然没有它的替代品使用的更频繁，有时速度较慢，而且当其替代品可以使用时，它将根本不会被使用。
 
-Using just the trait name for trait objects turned out to be a bad decision.
-The current syntax is often ambiguous and confusing, even to veterans,
-and favors a feature that is not more frequently used than its alternatives,
-is sometimes slower, and often cannot be used at all when its alternatives can.
+此外，随着 `impl Trait` 的到来，`impl Trait` vs `dyn Trait` 比 `impl Trait` vs `Trait` 更好更对称。
+`impl Trait`将在下一节进一步解释。
 
-Furthermore, with `impl Trait` arriving, "`impl Trait` vs `dyn Trait`" is much
-more symmetric, and therefore a bit nicer, than "`impl Trait` vs `Trait`".
-`impl Trait` is explained further in the next section.
-
-In the new edition, you should therefore prefer `dyn Trait` to just `Trait`
-where you need a trait object.
+因此，在新版本中，选择使用 trait 对象时，你应该选 `dyn Trait` 而不是 `Trait`。

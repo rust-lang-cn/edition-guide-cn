@@ -1,8 +1,8 @@
-# Associated constants
+# 相关常数
 
 ![Minimum Rust version: 1.20](https://img.shields.io/badge/Minimum%20Rust%20Version-1.20-brightgreen.svg)
 
-You can define traits, structs, and enums that have “associated functions”:
+你可以定义具有“关联函数”的 traits, structs, enums ：
 
 ```rust
 struct Struct;
@@ -18,11 +18,9 @@ fn main() {
 }
 ```
 
-These are called “associated functions” because they are functions that are
-associated with the type, that is, they’re attached to the type itself, and
-not any particular instance.
+这个叫做“关联函数”，因为它关联了相关的类型，也就是说，它们附加到类型本身，而不是任何特定的实例。
 
-Rust 1.20 adds the ability to define “associated constants” as well:
+Rust 1.20 中为关联函数增加了新的功能：
 
 ```rust
 struct Struct;
@@ -36,13 +34,10 @@ fn main() {
 }
 ```
 
-That is, the constant `ID` is associated with `Struct`. Like functions,
-associated constants work with traits and enums as well.
+其中，常量 `ID` 关联到 `Struct` 上，如果函数一样，关联常量也可以工作在 trait 和 enum 上。
 
-Traits have an extra ability with associated constants that gives them some
-extra power. With a trait, you can use an associated constant in the same way
-you’d use an associated type: by declaring it, but not giving it a value. The
-implementor of the trait then declares its value upon implementation:
+Trait 具有额外的能力和相关的常数，为他们提供额外的力量。使用特征，您可以像使用关联类型一样
+使用关联常量： 通过声明它，但不给它一个值。然后，特征的实现者在实现时声明其值：
 
 ```rust
 trait Trait {
@@ -60,8 +55,7 @@ fn main() {
 }
 ```
 
-Before this feature, if you wanted to make a trait that represented floating
-point numbers, you’d have to write this:
+在此功能之前，如果要创建表示浮点数的特征，则必须如下：
 
 ```rust
 trait Float {
@@ -71,10 +65,8 @@ trait Float {
 }
 ```
 
-This is slightly unwieldy, but more importantly, because they’re functions,
-they cannot be used in constant expressions, even though they only return a
-constant. Because of this, a design for `Float` would also have to include
-constants as well:
+这有点笨拙，但更重要的是，因为它们是函数，所以它们不能用于常量表达式，即使它们只返回常量。
+因此，`Float` 的设计也必须包含常量：
 
 ```rust,ignore
 mod f32 {
@@ -92,8 +84,7 @@ mod f32 {
 }
 ```
 
-Associated constants let you do this in a much cleaner way. This trait
-definition:
+关联常量让你可以更清晰的表达，如下：
 
 ```rust
 trait Float {
@@ -103,7 +94,7 @@ trait Float {
 }
 ```
 
-Leads to this implementation:
+继续实现如下：
 
 ```rust,ignore
 mod f32 {
@@ -114,4 +105,4 @@ mod f32 {
 }
 ```
 
-much cleaner, and more versatile.
+更加清晰，更通用。

@@ -1,12 +1,10 @@
-# Slice patterns
+# 切片模式
 
 ![Minimum Rust version: 1.26](https://img.shields.io/badge/Minimum%20Rust%20Version-1.26-brightgreen.svg)
 
-Have you ever tried to pattern match on the contents and structure of a slice?
-Rust 2018 will let you do just that.
+你有没有试过，用模式匹配去匹配切片的内容和结构？ Rust 2018 将让你做到这一点。
 
-For example, say we want to accept a list of names and respond to that with a
-greeting. With slice patterns, we can do that easy as pie with:
+例如，我们想要接受一个名单列表并回复问候语。使用切片模式，我们可以用以下方式轻松完成：
 
 ```rust
 fn main() {
@@ -33,9 +31,9 @@ fn greet(people: &[&str]) {
 }
 ```
 
-Now, you don't have to check the length first.
+现在，你不必检查长度了。
 
-We can also match on arrays like so:
+你也可以匹配 array 如下：
 
 ```rust
 let arr = [1, 2, 3];
@@ -46,46 +44,39 @@ assert_eq!("ends with 3", match arr {
 });
 ```
 
-## More details
+## 更多的细节
 
-### Exhaustive patterns
-
-In the first example, note in particular the `_ => ...` pattern.
-Since we are matching on a slice, it could be of any length, so we need a
-*"catch all pattern"* to handle it. If we forgot the `_ => ...` or
-`identifier => ...` pattern, we would instead get an error saying:
+### 穷举模式
+在第一个例子中，注意匹配的 `_ => ...`。 如果开始匹配，那么将会匹配一切情况，所以有“穷尽所有模式”的处理方式。
+如果我们忘记使用 `_ => ...` 或者 `identifier => ...` 模式，我们会得到如下的错误提醒：
 
 ```ignore
 error[E0004]: non-exhaustive patterns: `&[_, _, _]` not covered
 ```
 
-If we added a case for a slice of size `3` we would instead get:
+如果我们再增加一项，我们将得到如下：
 
 ```ignore
 error[E0004]: non-exhaustive patterns: `&[_, _, _, _]` not covered
 ```
 
-and so on...
+如此。
 
-### Arrays and exact lengths
-
-In the second example above, since arrays in Rust are of known lengths,
-we have to match on exactly three elements.
-If we try to match on 2 or 4 elements,we get the errors:
+### 数组和精确的长度
+在第二个例子中，数组是有固定长度的，我们需要匹配所有长度项，如果只匹配2，4项的话，会报错：
 
 ```ignore
 error[E0527]: pattern requires 2 elements but array has 3
 ```
 
-and
+和
 
 ```ignore
 error[E0527]: pattern requires 4 elements but array has 3
 ```
 
-### In the pipeline
+### 管道中
 
 [the tracking issue]: https://github.com/rust-lang/rust/issues/23121
 
-When it comes to slice patterns, more advanced forms are planned but
-have not been stabilized yet. To learn more, follow [the tracking issue].
+在切片模式方面，计划采用更先进的形式，但尚未稳定。要了解更多信息，请跟踪 [the tracking issue]。

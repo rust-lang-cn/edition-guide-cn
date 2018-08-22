@@ -1,12 +1,11 @@
-# More container types support trait objects
+# 支持 trait 对象的更多容器类型
 
 ![Minimum Rust version: 1.2](https://img.shields.io/badge/Minimum%20Rust%20Version-1.2-brightgreen.svg)
 
-In Rust 1.0, only certain, special types could be used to create [trait
-objects](https://doc.rust-lang.org/book/second-edition/ch17-02-trait-objects.html).
+在 Rust 1.0 中，只有某些特殊的类型可以创建成 [trait objects](https://doc.rust-lang.org/book/second-edition/ch17-02-trait-objects.html).
 
-With Rust 1.2, that restriction was lifted, and more types became able to do this. For example,
-`Rc<T>`, one of Rust's reference-counted types:
+在 Rust 1.2 中，这种限制被解除了，更多的类型可以做到这一点。 例如，
+`Rc<T>`，Rust 的引用计数类型之一：
 
 ```rust
 use std::rc::Rc;
@@ -22,7 +21,6 @@ fn main() {
 }
 ```
 
-This code would not work with Rust 1.0, but now works.
+这段代码在 Rust 1.0 中无法执行，但是现在可以了。
 
-> If you haven't seen the `dyn` syntax before, see the section on it. For
-> versions that do not support it, replace `Rc<dyn Foo>` with `Rc<Foo>`.
+> 如果您之前没有看过 `dyn` 语法，请参阅相关章节。对于不支持它的版本，将 `Rc <dyn Foo>` 替换为 `Rc <Foo>`。
