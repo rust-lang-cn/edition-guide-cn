@@ -13,7 +13,7 @@
 
 ****
 ``` text
-Sun: 翻译仓库地址： https://github.com/sunhuachuang/edition-guide-cn]
+Sun: 翻译仓库地址： https://github.com/sunhuachuang/edition-guide-cn
      阅读地址：https://sunhuachuang.github.io/edition-guide-cn/
      
      第一版翻译完成： 2018-8-22

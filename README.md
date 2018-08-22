@@ -1,6 +1,6 @@
 # The Rust Edition Guide
 
-## Edition Guide 中文本地化
+## Edition Guide 中文版 (Chinese)
 
 [![Build Status](https://travis-ci.org/rust-lang-nursery/edition-guide.svg?branch=master)](https://travis-ci.org/rust-lang-nursery/edition-guide)
 
