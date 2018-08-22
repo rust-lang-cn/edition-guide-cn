@@ -1,9 +1,8 @@
-# An attribute for deprecation
+# 弃用属性
 
 ![Minimum Rust version: 1.9](https://img.shields.io/badge/Minimum%20Rust%20Version-1.9-brightgreen.svg)
 
-If you're writing a library, and you'd like to deprecate something, you can
-use the `deprecated` attribute:
+如果您正在编写库，并且想要弃用某些内容，则可以使用 `deprecated` 属性：
 
 ```rust
 #[deprecated(
@@ -15,7 +14,7 @@ pub fn foo() {
 }
 ```
 
-This will give your users a warning if they use the deprecated functionality:
+如果用户使用已弃用的功能，则会向您的用户发出警告：
 
 ```text
    Compiling playground v0.0.1 (file:///playground)
@@ -29,7 +28,6 @@ warning: use of deprecated item 'foo': Please use the bar function instead
 
 ```
 
-Both `since` and `note` are optional.
+`since` 和 `note` 都是可选的。
 
-`since` can be in the future; you can put whatever you'd like, and what's put in
-there isn't checked.
+`since` 可以是将来的; 你可以在那放任何东西，因为那儿并没有检查。

@@ -1,9 +1,8 @@
-# `..=` for inclusive ranges
+# `..=` 包含取值范围
 
 ![Minimum Rust version: 1.26](https://img.shields.io/badge/Minimum%20Rust%20Version-1.26-brightgreen.svg)
 
-Since well before Rust 1.0, you’ve been able to create exclusive ranges with
-.. like this:
+在以前的 Rust 1.0 中，我们像下面这样写一个取值范围：
 
 ```
 for i in 1..3 {
@@ -11,8 +10,7 @@ for i in 1..3 {
 }
 ```
 
-This will print `i: 1` and then `i: 2`. Today, you can now create an
-inclusive range, like this:
+这将会打印 `i: 1` 然后是 `i: 2`，现在你可以这么写：
 
 ```rust
 for i in 1..=3 {
@@ -20,10 +18,8 @@ for i in 1..=3 {
 }
 ```
 
-This will print `i: 1` and then `i: 2` like before, but also `i: 3`; the
-three is included in the range. Inclusive ranges are especially useful if you
-want to iterate over every possible value in a range. For example, this is a
-surprising Rust program:
+这也会打印 `i: 1` 然后是 `i: 2`，最后是 `i: 3`; 最后的也将会包含在范围取值中，
+当你需要包含取值范围的时候，这会十分有用。下面是一个令人惊奇的例子：
 
 ```rust
 fn takes_u8(x: u8) {
@@ -38,8 +34,7 @@ fn main() {
 }
 ```
 
-What does this program do? The answer: nothing. The warning we get when
-compiling has a hint:
+这个程序做了什么？回答是：没有任何东西。编译器将会报出警告：
 
 ```text
 warning: literal out of range for u8
@@ -51,10 +46,9 @@ warning: literal out of range for u8
   = note: #[warn(overflowing_literals)] on by default
 ```
 
-That’s right, since `i` is a `u8`, this overflows, and is the same as writing
-`for i in 0..0`, so the loop executes zero times.
+这是正常的，因为 `i` 作为一个 `u8`，256超出了范围，这就导致效果和 `for i in 0..0` 一样, 这段代码将执行0次。
 
-We can do this with inclusive ranges, however:
+但是，我们现在可以这么写：
 
 ```rust
 fn takes_u8(x: u8) {
@@ -69,4 +63,4 @@ fn main() {
 }
 ```
 
-This will produce those 256 lines of output you might have been expecting.
+这个将会执行256次你需要执行的内容。

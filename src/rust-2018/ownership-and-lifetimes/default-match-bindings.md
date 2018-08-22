@@ -1,9 +1,8 @@
-# Default match bindings
+# 默认匹配绑定
 
 ![Minimum Rust version: 1.26](https://img.shields.io/badge/Minimum%20Rust%20Version-1.26-brightgreen.svg)
 
-Have you ever had a borrowed `Option<T>` and tried to match on it? You
-probably wrote this:
+你有过借用 `Option<T>` 然后进行匹配的经历嘛？你可能写成下面这样：
 
 ```rust,ignore
 let s: &Option<String> = &Some("hello".to_string());
@@ -14,8 +13,7 @@ match s {
 };
 ```
 
-In Rust 2015, this would fail to compile, and you would have to write the
-following instead:
+在 Rust 2015，这样写是错的，你必须这样写：
 
 ```rust,ignore
 // Rust 2015
@@ -28,18 +26,13 @@ match s {
 };
 ```
 
-Rust 2018, by contrast, will infer the `&`s and `ref`s, and your original
-code will Just Work.
+在 Rust 2018， 对比之下，会自动推断 `&` 和 `ref`，然后你再这样写就没问题了。
 
-This affects not just `match`, but patterns everywhere, such as in `let`
-statements, closure arguments, and `for` loops.
+这个并不仅仅影响 `match`，也会影响到很多地方，比如 `let` 表达式，闭包以及 `for` 循环。
 
-## More details
-
-The mental model of patterns has shifted a bit with this change, to bring it
-into line with other aspects of the language. For example, when writing a
-`for` loop, you can iterate over borrowed contents of a collection by
-borrowing the collection itself:
+## 更多的细节
+模式的心理预期模型随着这种变化而略有改变，使其与语言的其他方面保持一致。
+例如，在编写 `for` 循环时，您可以通过借用集合本身来迭代集合的借用内容：
 
 ```rust,ignore
 let my_vec: Vec<i32> = vec![0, 1, 2];
@@ -47,15 +40,9 @@ let my_vec: Vec<i32> = vec![0, 1, 2];
 for x in &my_vec { ... }
 ```
 
-The idea is that an `&T` can be understood as a *borrowed view of `T`*, and
-so when you iterate, match, or otherwise destructure a `&T` you get a
-borrowed view of its internals as well.
+这个想法是 `＆T` 可以被理解为 *`T` 的借用视图*，所以当你迭代，匹配或以其他方式构造一个 `＆T` 时，你可以借用它的内部视图。
 
-More formally, patterns have a "binding mode," which is either by value
-(`x`), by reference (`ref x`), or by mutable reference (`ref mut x`). In Rust
-2015, `match` always started in by-value mode, and required you to explicitly
-write `ref` or `ref mut` in patterns to switch to a borrowing mode. In Rust
-2018, the type of the value being matched informs the binding mode, so that
-if you match against an `&Option<String>` with a `Some` variant, you are put
-into `ref` mode automatically, giving you a borrowed view of the internal
-data. Similarly, `&mut Option<String>` would give you a `ref mut` view.
+更正式地说，模式具有“绑定模式”，它可以是值（ `x` ），引用（ `ref x` ），也可以是可变引用（ `ref mut x` ）。 
+在 Rust 2015 中，`match` 总是以by-value模式启动，并要求你在模式中显式写 `ref` 或 `ref mut` 以切换到借用模式。
+在 Rust 2018 中，匹配的值的类型通知绑定模式，因此如果您使用 `Some` 变量匹配 `＆Option <String>`，您将自动进入 `ref` 模式，
+为您提供借用查看内部数据。 类似地，`＆mut Option <String>` 会给你一个 `ref mut` 视图。

@@ -1,23 +1,13 @@
-# Incremental Compilation
+# 增量编译
 
 ![Minimum Rust version: 1.24](https://img.shields.io/badge/Minimum%20Rust%20Version-1.24-brightgreen.svg)
 
-Back in September of 2016, we [blogged about Incremental
-Compilation](https://blog.rust-lang.org/2016/09/08/incremental.html). While
-that post goes into the details, the idea is basically this: when you’re
-working on a project, you often compile it, then change something small, then
-compile again. Historically, the compiler has compiled your entire project,
-no matter how little you’ve changed the code. The idea with incremental
-compilation is that you only need to compile the code you’ve actually
-changed, which means that that second build is faster.
+早在2016年9月，[关于增量编译的博客](https://blog.rust-lang.org/2016/09/08/incremental.html)。
+虽然这篇文章详细介绍了，但这个想法基本上是这样的：当你在一个项目上工作时，你经常编译它，然后改变一些小的东西，然后重新编译。
+从历史上看，无论您更改代码的程度如何，编译器都会编译整个项目。渐进式编译的想法是，您只需要编译实际更改的代码，这意味着第二次构建更快。
 
-This is now turned on by default. This means that your builds should be
-faster! Don’t forget about cargo check when trying to get the lowest possible
-build times.
+现在默认情况下已启用此功能。这意味着您的构建应该更快！在尝试获得尽可能低的构建时间时，不要忘记 crates 检查。
 
-This is still not the end story for compiler performance generally, nor
-incremental compilation specifically. We have a lot more work planned in the
-future.
+这通常不是编译器性能的最终故事，也不是具体的增量编译。我们计划在未来做更多的工作。
 
-One small note about this change: it makes builds faster, but makes the final
-binary a bit slower. For this reason, it's not turned on in release builds.
+关于这种变化的一个小注意事项：它使构建更快，但使最终的二进制文件慢一点。出于这个原因，它在发布版本中没有打开。

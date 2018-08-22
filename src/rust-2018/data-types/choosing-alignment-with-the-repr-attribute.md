@@ -1,17 +1,13 @@
-# Choosing alignment with the repr attribute
+# repr 属性的对齐方式
 
 ![Minimum Rust version: 1.25](https://img.shields.io/badge/Minimum%20Rust%20Version-1.25-brightgreen.svg)
 
-From [Wikipedia](https://en.wikipedia.org/wiki/Data_structure_alignment):
+[Wikipedia](https://en.wikipedia.org/wiki/Data_structure_alignment):
 
-> The CPU in modern computer hardware performs reads and writes to memory
-> most efficiently when the data is naturally aligned, which generally means
-> that the data address is a multiple of the data size. Data alignment refers
-> to aligning elements according to their natural alignment. To ensure natural
-> alignment, it may be necessary to insert some padding between structure
-> elements or after the last element of a structure.
+> 现代计算机硬件中的 CPU 在数据自然对齐时，可以最有效地执行对存储器的读写，这通常意味着数据地址是数据大小的倍数。
+> 数据对齐是指根据元素的自然对齐来对齐元素。为了确保自然对齐，可能需要在结构元素之间或结构的最后一个元素之后插入一些填充值。
 
-The `#[repr]` attribute has a new parameter, `align`, that sets the alignment of your struct:
+`#[repr]` 属性有一个新参数 `align`，用于设置结构体的对齐方式：
 
 ```rust
 struct Number(i32);
@@ -26,30 +22,13 @@ assert_eq!(std::mem::align_of::<Align16>(), 16);
 assert_eq!(std::mem::size_of::<Align16>(), 16);
 ```
 
-If you’re working with low-level stuff, control of these kinds of things can
-be very important!
+如果您正在使用底层级别的东西，控制这些事情可能非常重要！
 
-The alignment of a type is normally not worried about as the compiler will
-"do the right thing" of picking an appropriate alignment for general use
-cases. There are situations, however, where a nonstandard alignment may be
-desired when operating with foreign systems. For example these sorts of
-situations tend to necessitate or be much easier with a custom alignment:
+一般来说，类型的对齐并不担心，因为编译器将为一般用例选择适当的对齐“做正确的事情”。
+但是，在使用外部系统操作时，可能需要非标准对齐。例如，通过自定义对齐，这些情况往往需要或更容易：
 
-* Hardware can often have obscure requirements such as "this structure is
-  aligned to 32 bytes" when it in fact is only composed of 4-byte values. While
-  this can typically be manually calculated and managed, it's often also useful
-  to express this as a property of a type to get the compiler to do a little
-  extra work instead.
-* C compilers like `gcc` and `clang` offer the ability to specify a custom
-  alignment for structures, and Rust can much more easily interoperate with
-  these types if Rust can also mirror the request for a custom alignment (e.g.
-  passing a structure to C correctly is much easier).
-* Custom alignment can often be used for various tricks here and there and is
-  often convenient as "let's play around with an implementation" tool. For
-  example this can be used to statically allocate page tables in a kernel or
-  create an at-least cache-line-sized structure easily for concurrent
-  programming.
+* 当硬件实际上仅由4字节值组成时，硬件通常具有模糊的要求，例如“此结构对齐到32字节”。虽然这通常可以手动计算和管理，但将它表达为类型的属性通常也很有用，可以让编译器做一些额外的工作。
+* 像 `gcc` 和 `clang` 这样的C编译器提供了为结构指定自定义对齐的能力，如果 Rust 也可以镜像自定义对齐的请求（例如将结构传递给C），Rust 可以更容易地与这些类型进行互操作。正确的更容易）。
+* 自定义对齐通常可以在这里和那里用于各种技巧，并且通常很方便，因为“让我们使用实现”工具。例如，这可用于在内核中静态分配页表，或者为并发编程轻松创建至少缓存行大小的结构。
 
-The purpose of this feature is to provide a lightweight annotation to alter
-the compiler-inferred alignment of a structure to enable these situations
-much more easily.
+此功能的目的是提供轻量级注释，以更改结构的编译器推断对齐，从而更轻松地启用这些情况。

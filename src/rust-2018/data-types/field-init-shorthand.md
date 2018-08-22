@@ -1,9 +1,8 @@
-# Field init shorthand
+# 字段初始化简写
 
 ![Minimum Rust version: 1.17](https://img.shields.io/badge/Minimum%20Rust%20Version-1.17-brightgreen.svg)
 
-In older Rust, when initializing a struct, you must always give the full set of `key: value` pairs
-for its fields:
+在以往的 Rust 中，当初始化一个结构体的时候，总是需要完全按照 `key: value` 对的写法：
 
 ```rust
 struct Point {
@@ -20,8 +19,7 @@ let p = Point {
 };
 ```
 
-However, often these variables would have the same names as the fields. So you'd end up
-with code that looks like this:
+但是，这些字段通常会是相同的名字，所以你可以把它写成这样：
 
 ```rust,ignore
 let p = Point {
@@ -30,7 +28,7 @@ let p = Point {
 };
 ```
 
-Now, if the variable is of the same name, you don't have to write out both, just write out the key:
+现在，如果变量名和结构体字段名相同，可以省略写成这样：
 
 ```rust
 struct Point {

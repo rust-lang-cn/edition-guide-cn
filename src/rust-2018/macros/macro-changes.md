@@ -1,12 +1,10 @@
-# Macro changes
+# 宏的变化
 
 ![Minimum Rust version: nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-red.svg)
 
-In Rust 2018, you can import specific macros from external crates via `use`
-statements, rather than the old `#[macro_use]` attribute.
+在 Rust 2018 中，您可以通过 `use` 语句从外部包中导入特定的宏，而不是旧的 `#[macro_use]` 属性。
 
-For example, consider a `bar` crate that implements a `baz!` macro. In
-`src/lib.rs`:
+举个例子，考虑 `bar` 包中实现了一个 `!bar` 宏，在 `src/lib.rs` 中：
 
 ```rust
 #[macro_export]
@@ -15,7 +13,7 @@ macro_rules! baz {
 }
 ```
 
-In your crate, you would have written
+在你的包中，你可以这样写：
 
 ```rust,ignore
 // Rust 2015
@@ -28,7 +26,7 @@ fn main() {
 }
 ```
 
-Now, you write:
+现在你可以这样：
 
 ```rust,ignore
 // Rust 2018
@@ -41,16 +39,14 @@ fn main() {
 }
 ```
 
-This moves `macro_rules` macros to be a bit closer to other kinds of items.
+这会使 `macro_rules` 宏更接近其他类型的项目。
 
 
-## Procedural macros
+## 程序宏
+使用过程宏来派生特征时，您必须命名提供自定义派生的宏。
+这通常与特征的名称相匹配，但请查阅提供派生的包的文档以确认。
 
-When using procedural macros to derive traits, you will have to name the macro
-that provides the custom derive. This generally matches the name of the trait,
-but check with the documentation of the crate providing the derives to be sure.
-
-For example, with Serde you would have written
+举个例子，在 Serde 中，你可以这样写：
 
 ```rust,ignore
 // Rust 2015
@@ -61,7 +57,7 @@ extern crate serde;
 struct Bar;
 ```
 
-Now, you write instead:
+现在你可以这样：
 
 ```rust,ignore
 // Rust 2018
@@ -73,7 +69,5 @@ struct Bar;
 ```
 
 
-## More details
-
-This only works for macros defined in external crates.
-For macros defined locally, `#[macro_use] mod foo;` is still required, as it was in Rust 2015.
+## 更多细节：
+这仅适用于外部包中定义的宏。 对于本地定义的宏，`#[macro_use] mod foo;` 还是需要的，如同 Rust 2015 一样。

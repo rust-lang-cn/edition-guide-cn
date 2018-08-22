@@ -1,9 +1,8 @@
-# Custom Derive
+# 自定义 Derive
 
 ![Minimum Rust version: 1.15](https://img.shields.io/badge/Minimum%20Rust%20Version-1.15-brightgreen.svg)
 
-In Rust, you’ve always been able to automatically implement some traits
-through the derive attribute:
+在 Rust 中，你始终可以能够通过derive属性来自动实现一些特性：
 
 ```rust
 #[derive(Debug)]
@@ -12,8 +11,7 @@ struct Pet {
 }
 ```
 
-The `Debug` trait is then implemented for `Pet`, with vastly less boilerplate. For example, without `derive`, you'd have
-to write this:
+`Pet` 实现了 `Debug` 特性， 使用了相当少的代码，非常醒目。举个例子，如果没有 `derive`，你需要这样写：
 
 ```rust
 use std::fmt;
@@ -37,13 +35,9 @@ impl fmt::Debug for Pet {
 }
 ```
 
-Whew!
+哈!
 
-However, this only worked for traits provided as part of the standard
-library; it was not customizable. But now, you can tell Rust what to do when
-someone wants to derive your trait. This is used heavily in popular crates
-like [serde](https://serde.rs/) and [Diesel](http://diesel.rs/).
+但是，这仅适用于作为标准库的一部分提供的特征; 它不可定制。 但是现在，当有人想要推导出你的特质时，你可以告诉Rust要做什么。
+这在[serde](https://serde.rs/)， [Diesel](http://diesel.rs/)等流行的crate中大量使用。
 
-For more, including learning how to build your own custom derive, see [The
-Rust Programming
-Language](https://doc.rust-lang.org/book/second-edition/appendix-04-macros.html#procedural-macros-for-custom-derive).
+获取更多信息，包括如果构建你自己的derive，查阅 [The Rust Programming Language](https://doc.rust-lang.org/book/second-edition/appendix-04-macros.html#procedural-macros-for-custom-derive).

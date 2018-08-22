@@ -1,10 +1,9 @@
-# SIMD for faster computing
+# SIMD 更快的计算
 
 ![Minimum Rust version: 1.27](https://img.shields.io/badge/Minimum%20Rust%20Version-1.27-brightgreen.svg)
 
-The basics of [SIMD](https://en.wikipedia.org/wiki/SIMD) are now available!
-SIMD stands for “single instruction, multiple data.” Consider a function like
-this:
+[SIMD](https://en.wikipedia.org/wiki/SIMD) 的基础部分已经可用了！
+SIMD 代表“单指令，多数据”。考虑这样的函数：
 
 ```rust
 pub fn foo(a: &[u8], b: &[u8], c: &mut [u8]) {
@@ -14,25 +13,14 @@ pub fn foo(a: &[u8], b: &[u8], c: &mut [u8]) {
 }
 ```
 
-Here, we’re taking two slices, and adding the numbers together, placing the
-result in a third slice. The simplest possible way to do this would be to do
-exactly what the code does, and loop through each set of elements, add them
-together, and store it in the result. However, compilers can often do better.
-LLVM will usually “autovectorize” code like this, which is a fancy term for
-“use SIMD.” Imagine that `a` and `b` were both 16 elements long. Each element
-is a `u8`, and so that means that each slice would be 128 bits of data. Using
-SIMD, we could put both `a` and `b` into 128 bit registers, add them together
-in a *single* instruction, and then copy the resulting 128 bits into `c`.
-That’d be much faster!
+在这里，我们采用两个切片，并将数字加在一起，将结果放在第三个切片中。最简单的方法是完成代码所做的工作，循环遍历每组元素，将它们添加到一起，并将其存储在结果中。
+但是，编译器通常可以做得更好。 LLVM 通常会“自动向量化”这样的代码，这是“使用 SIMD ”的一个奇特术语。
+想象一下，`a` 和 `b` 都是16个元素长。每个元素都是一个“u8”，这意味着每个切片都是128位数据。
+使用SIMD，我们可以将 `a` 和 `b` 放入128位寄存器，将它们一起添加到*single*指令中，然后将得到的128位复制到 `c` 中。那要快得多！
 
-While stable Rust has always been able to take advantage of
-autovectorization, sometimes, the compiler just isn’t smart enough to realize
-that we can do something like this. Additionally, not every CPU has these
-features, and so LLVM may not use them so your program can be used on a wide
-variety of hardware. The `std::arch` module allows us to use these kinds of
-instructions directly, which means we don’t need to rely on a smart compiler.
-Additionally, it includes some features that allow us to choose a particular
-implementation based on various criteria. For example:
+虽然稳定的Rust总是能够利用自动向量化，但有时候，编译器并不够聪明，不能意识到我们可以做这样的事情。
+此外，并非每个CPU都有这些功能，因此 LLVM 可能不会使用它们，因此您的程序可以在各种硬件上使用。 `std::arch` 模块允许我们直接使用这些指令，这意味着我们不需要依赖智能编译器。
+此外，它还包含一些功能，允许我们根据各种标准选择特定的实现。例如：
 
 ```rust,ignore
 #[cfg(all(any(target_arch = "x86", target_arch = "x86_64"),
@@ -49,9 +37,7 @@ fn foo() {
 }
 ```
 
-Here, we use cfg flags to choose the correct version based on the machine
-we’re targeting; on x86 we use that version, and on x86_64 we use its
-version. We can also choose at runtime:
+在这里，我们使用 cfg 标志根据我们定位的机器选择正确的版本; 在 x86 上我们使用该版本，在 x86_64 上我们使用它的版本。 我们也可以在运行时选择：
 
 ```rust,ignore
 fn foo() {
@@ -66,21 +52,15 @@ fn foo() {
 }
 ```
 
-Here, we have two versions of the function: one which uses AVX2, a specific
-kind of SIMD feature that lets you do 256-bit operations. The
-`is_x86_feature_detected!` macro will generate code that detects if your CPU
-supports AVX2, and if so, calls the foo_avx2 function. If not, then we fall
-back to a non-AVX implementation, foo_fallback. This means that our code will
-run super fast on CPUs that support AVX2, but still work on ones that don’t,
-albeit slower.
+在这里，我们有两个版本的功能：一个使用 AVX2，一种特定的 SIMD 功能，可以让你进行256位操作。
+`is_x86_feature_detected！` 宏将生成检测 CPU 是否支持 AVX2 的代码，如果是，则调用 foo_avx2 函数。如果没有，那么我们回到非 AVX 实现 foo_fallback。 
+这意味着我们的代码将在支持 AVX2 的CPU上运行得非常快，但仍然可以在不支持 AVX2 的CPU上运行，尽管速度较慢。
 
-If all of this seems a bit low-level and fiddly, well, it is! `std::arch` is
-specifically primitives for building these kinds of things. We hope to
-eventually stabilize a `std::simd` module with higher-level stuff in the
-future. But landing the basics now lets the ecosystem experiment with higher
-level libraries starting today. For example, check out the
-[faster](https://github.com/AdamNiederer/faster) crate. Here’s a code snippet
-with no SIMD:
+如果所有这一切看起来都有点低级和狡猾，那就好了！ `std::arch` 特别适用于构建这类东西。
+我们希望最终能够在更高级别的东西中稳定一个 `std::simd` 模块。
+但从现在开始，这些基础点可以让生态系统开始尝试更高级别的库。
+
+举个例子： 查阅 [faster](https://github.com/AdamNiederer/faster) 库. 这是一个没有 SIMD 的代码片段：
 
 ```rust,ignore
 let lots_of_3s = (&[-123.456f32; 128][..]).iter()
@@ -90,7 +70,7 @@ let lots_of_3s = (&[-123.456f32; 128][..]).iter()
     .collect::<Vec<f32>>();
 ```
 
-To use SIMD with this code via faster, you’d change it to this:
+使用 SIMD 的代码将会更快，你需要改成这样：
 
 ```rust,ignore
 let lots_of_3s = (&[-123.456f32; 128][..]).simd_iter()
@@ -100,9 +80,7 @@ let lots_of_3s = (&[-123.456f32; 128][..]).simd_iter()
     .scalar_collect();
 ```
 
-It looks almost the same: `simd_iter` instead of `iter`, `simd_map` instead of `map`,
-`f32s(2.0)` instead of `2.0`. But you get a SIMD-ified version generated for you.
+这看起来差不多： `simd_iter` 取代 `iter`, `simd_map` 取代 `map`, `f32s(2.0)` 取代 `2.0`。但是你需要一个 SIMD-ified 版本。
 
-Beyond that, you may never write any of this yourself, but as always, the
-libraries you depend on may. For example, the regex crate contains these SIMD
-speedups without you needing to do anything at all!
+除此之外，您可能永远不会自己编写任何内容，但与往常一样，您依赖的库可能。
+例如，正则表达式包含这些 SIMD 加速，而您根本不需要做任何事情！

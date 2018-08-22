@@ -1,17 +1,14 @@
-# `T: 'a` inference in structs
+# `T: 'a` 结构体中的推导
 
 ![Minimum Rust version: nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-red.svg)
 
-An annotation in the form of `T: 'a`, where `T` is either a type or another
-lifetime, is called an *"outlives"* requirement. Note that *"outlives"* also
-implies `'a: 'a`.
+一个注释形式为 `T：'a`，其中 `T` 可以是一个类型或另一个生命周期，被称为 *“outlives”* 要求。
+注意 *“outlives”* 也意味着 `'a：'a`。
 
-One way in which edition 2018 helps you out in maintaining flow when writing
-programs is by removing the need to explicitly annotate these `T: 'a` outlives
-requirements in `struct` definitions. Instead, the requirements will be
-inferred from the fields present in the definitions.
+2018版在编写程序时帮助您保持流程的一种方法是，不需要在 `struct` 定义中明确注释这些 `T：'a` 的要求。
+相反，这些要求将从定义中的字段推断出来。
 
-Consider the following `struct` definitions in Rust 2015:
+考虑下面这个 `struct` 定义，在 Rust 2015 中：
 
 ```rust
 // Rust 2015
@@ -42,7 +39,7 @@ where
 }
 ```
 
-In Rust 2018, since the requirements are inferred, you can instead write:
+在 Rust 2018 中， 这种需求是可以被推导的，你可以这样写：
 
 ```rust,ignore
 // Rust 2018
@@ -64,9 +61,9 @@ struct ItemRef<'a, T: Iterator> {
 }
 ```
 
-If you prefer to be more explicit in some cases, that is still possible.
+如果您希望在某些情况下更明确，那仍然是可能的。
 
-## More details
+## 更多的细节
 
-For more details, see [the tracking issue](https://github.com/rust-lang/rust/issues/44493)
-and [the RFC](https://github.com/rust-lang/rfcs/pull/2093).
+更多信息，查阅 [the tracking issue](https://github.com/rust-lang/rust/issues/44493) 
+和 [the RFC](https://github.com/rust-lang/rfcs/pull/2093).

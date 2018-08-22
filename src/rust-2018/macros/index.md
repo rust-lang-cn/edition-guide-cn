@@ -1,6 +1,5 @@
-# Macros
+# 宏
 
 [custom-derive]: custom-derive.md
 
-In this chapter of the guide, we discuss a few improvements to the macro system.
-A notable addition here is the introduction of [custom derive macros][custom-derive].
+在本章节，主要讨论宏系统的改进，特别需要关注的是 [自定义 derive][custom-derive]。

@@ -1,10 +1,9 @@
-# "Operator-equals" are now implementable
+# "Operator-equals" 现在实现了
 
 ![Minimum Rust version: 1.8](https://img.shields.io/badge/Minimum%20Rust%20Version-1.8-brightgreen.svg)
 
-The various “operator equals” operators, such as `+=` and `-=`, are
-implementable via various traits. For example, to implement `+=` on
-a type of your own:
+各种各样的 “等价操作符” 已经被各种各样的trait实现了, 比如 `+=` 和 `-=`。
+举个例子：下面是一个 `+=` 操作符：
 
 ```rust
 use std::ops::AddAssign;
@@ -30,4 +29,4 @@ fn main() {
 }
 ```
 
-This will print `Count { value: 6 }`.
+这将打印 `Count { value: 6 }`.
