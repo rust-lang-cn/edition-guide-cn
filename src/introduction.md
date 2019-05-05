@@ -4,8 +4,8 @@
 >
 > 本文档按照 [**Rust 文档翻译指引**](https://rustwiki.org/zh-CN/rust-wiki/translate/rust-translation-guide.html)规范进行翻译，本文档已加入到 [Rust 中文翻译项目组][rust-lang-cn]。  
 >《Rust 版本指南》（The Rust Edition Guide 中文版）翻译自 [The Rust Edition Guide][website]，内容已全部翻译完成。本翻译项目相关信息：
-> - 《Rust 版本指南》 Github 翻译项目地址：<https://github.com/rust-lang-cn/edtion-guide-cn>
-> - 《Rust 版本指南》阅读地址：<https://rustwiki.org/zh-CN/edition-guide-cn/>  
+> - 《Rust 版本指南》 Github 翻译项目地址：<https://github.com/rust-lang-cn/edition-guide-cn>
+> - 《Rust 版本指南》阅读地址：<https://rustwiki.org/zh-CN/edition-guide/>  
 > - 译者：*Sun* (<https://github.com/sunhuachuang/>）  
 > - 第一次完整翻译时间： 2018-08-22
 > - 中文版最后更新时间： 2019-05-05
@@ -23,5 +23,5 @@
 
 [website]: https://doc.rust-lang.org/nightly/edition-guide/
 [rust-lang-cn]: https://github.com/rust-lang-cn
-[home]: https://github.com/rust-lang-cn/edtion-guide-cn
+[home]: https://github.com/rust-lang-cn/edition-guide-cn
 [std]: https://doc.rust-lang.org/std/
