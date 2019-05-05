@@ -1,8 +1,12 @@
-# The Rust Edition Guide
+# Rust 版本指南
 
-## Edition Guide 中文版 (Chinese)
+[![Build Status](https://travis-ci.org/rust-lang-cn/edition-guide-cn.svg?branch=master)](https://travis-ci.org/rust-lang-cn/edition-guide-cn)
 
-[![Build Status](https://travis-ci.org/rust-lang-nursery/edition-guide.svg?branch=master)](https://travis-ci.org/rust-lang-nursery/edition-guide)
+> The Chinese Translation of [The Rust Edition Guide](https://github.com/rust-lang-nursery/edition-guide)
+>
+> 本文档按照 [**Rust 文档翻译指引**](https://rustwiki.org/zh-CN/rust-wiki/translate/rust-translation-guide.html)规范进行翻译。  
+> 首次于 2018-08-22 翻译完全部内容，欢迎纠正——最后更新时间 2019.5.5  
+> 近段时间将跟随英文版进行升级调整，欢迎大家踊跃参与，共同更新内容 —— 2019.5.5  
 
 This book explains the concept of "editions", major new eras in [Rust]'s
 development. You can [read the book
