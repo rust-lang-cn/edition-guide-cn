@@ -8,9 +8,7 @@
 > 首次于 2018-08-22 翻译完全部内容，欢迎纠正——最后更新时间 2019.5.5  
 > 近段时间将跟随英文版进行升级调整，欢迎大家踊跃参与，共同更新内容 —— 2019.5.5  
 
-This book explains the concept of "editions", major new eras in [Rust]'s
-development. You can [read the book
-online](https://rust-lang-nursery.github.io/edition-guide/).
+本书解释了 Rust “版本”（“edition”）的概念，即 Rust 开发中的全新的大代号。你可以在线[阅读本书中文版](https://rustwiki.org/zh-CN/edition-guide/)（[阅读英文版本](https://doc.rust-lang.org/nightly/edition-guide/)）。
 
 [Rust]: https://www.rust-lang.org/
 
