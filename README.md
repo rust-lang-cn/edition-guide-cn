@@ -12,18 +12,17 @@
 
 [Rust]: https://www.rust-lang.org/
 
-## License
+## 授权协议
 
-The Edition Guide is dual licensed under `MIT`/`Apache2`, just like Rust itself.
-See the `LICENSE-*` files in this repository for more details.
+本版本指南使用  `MIT`/`Apache2` 进行双重许可授权，就像 Rust 本身一样。请参阅此本仓库的的 `LICENSE-*` 文件了解更多信息。
 
-## Building locally
+## 在本地构建
 
-You can also build the book and read it locally if you'd like.
+你也可以自己构建本书并在本地阅读。
 
-### Requirements
+### 要求
 
-Building the book requires [mdBook]. To get it:
+构建本书需要 [mdBook]。执行下面命令进行安装:
 
 [mdBook]: https://github.com/azerupi/mdBook
 
@@ -31,16 +30,15 @@ Building the book requires [mdBook]. To get it:
 $ cargo install mdbook
 ```
 
-### Building
+### 构建
 
-To build the book, do this:
+执行下面命令进行构建：
 
 ```bash
 $ mdbook build
 ```
 
-The output will be in the `book` subdirectory. To check it out, open it in
-your web browser.
+输出内容将在 `book` 子目录中，可使用浏览器中打开查看内容。
 
 _Firefox:_
 
@@ -60,7 +58,7 @@ $ Start-Process "chrome.exe" .\book\index.html  # Windows (PowerShell)
 $ start chrome.exe .\book\index.html            # Windows (Cmd)
 ```
 
-To run the tests:
+运行测试：
 
 ```bash
 $ mdbook test
