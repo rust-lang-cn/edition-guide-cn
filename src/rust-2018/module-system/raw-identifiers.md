@@ -2,8 +2,8 @@
 
 ![Minimum Rust version: nightly](https://img.shields.io/badge/Minimum%20Rust%20Version-nightly-red.svg)
 
-与许多编程语言一样，Rust 具有“关键字”的概念。 
-这些标识符对语言有意义，因此你不能在变量名，函数名和其他位置使用它们。 
+与许多编程语言一样，Rust 具有“关键字”的概念。
+这些标识符对语言有意义，因此你不能在变量名，函数名和其他位置使用它们。
 原始标识符允许你使用通常不允许的关键字。
 
 举个例子，`match` 是一个关键字。如果你试图编译这个方法：
@@ -26,7 +26,7 @@ error: expected identifier, found keyword `match`
 
 你可以使用原始标识符来实现:
 
-```rust
+```rust,ignore
 #![feature(rust_2018_preview)]
 #![feature(raw_identifiers)]
 
@@ -42,8 +42,8 @@ fn main() {
 注意 `r#` 不仅在定义的时候有，在调用的时候也得有。
 
 ## 更多的细节
-此功能还是有一些用处的，但主要动机是版本间的情况。 
-例如，`try` 不是2015版的关键字，而是2018版的。 
+此功能还是有一些用处的，但主要动机是版本间的情况。
+例如，`try` 不是2015版的关键字，而是2018版的。
 因此，如果你有一个用 Rust 2015 编写并具有 `try` 函数的库，要在 Rust 2018 中调用它，你需要使用原始标识符。
 
 ## 新的关键字

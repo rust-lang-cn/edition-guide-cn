@@ -33,7 +33,7 @@ impl<'a> fmt::Debug for StrWrap<'a> {
 
 在 Rust 2018，你可以替换成这样：
 
-```rust
+```rust,ignore
 #![feature(rust_2018_preview)]
 
 # use std::fmt;
@@ -76,7 +76,7 @@ impl<'a, 'b: 'a> Foo<'a, 'b> {
 
 我们可以重写为：
 
-```rust
+```rust,ignore
 #![feature(rust_2018_preview)]
 
 # struct Foo<'a, 'b: 'a> {

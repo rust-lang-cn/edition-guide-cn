@@ -1,7 +1,7 @@
 # `?` 在 `main` 和 tests 中
 ![Minimum Rust version: 1.26](https://img.shields.io/badge/Minimum%20Rust%20Version-1.26-brightgreen.svg)
 
-Rust的错误处理围绕返回 `Result <T，E>` 并使用 `?` 传播错误。 
+Rust的错误处理围绕返回 `Result <T，E>` 并使用 `?` 传播错误。
 对于那些编写许多小程序并且希望进行许多测试的人来说，更关注于那些复杂的入口，例如`main`和`#[test]`中的错误处理。
 
 举个例子，你将尝试这样写：
@@ -82,7 +82,7 @@ pub trait Termination {
 
 `Result` 和 `()` 的这个特性的两个简化示例实现是：
 
-```rust
+```rust,ignore
 # #![feature(process_exitcode_placeholder, termination_trait_lib)]
 # use std::process::ExitCode;
 # use std::fmt;
@@ -110,7 +110,7 @@ impl<E: fmt::Debug> Termination for Result<(), E> {
 }
 ```
 
-正如您在 `()` 中看到的那样，只返回成功代码。 
+正如您在 `()` 中看到的那样，只返回成功代码。
 在 `Result` 的情况下，成功的话交给 `()` 来执行，错误的话，交给 `Err(..)`，打印出错误消息并退出代码。
 
 要了解有关更细节的信息，请参阅[跟踪问题](https://github.com/rust-lang/rust/issues/43301) 或者 [the RFC](https://github.com/rust-lang/rfcs/blob/master/text/1937-ques-in-main.md).
