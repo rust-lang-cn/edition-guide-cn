@@ -3,3 +3,7 @@ authors = ["The Rust Project Developers && Sun Huachuang"]
 multilingual = false
 src = "src"
 title = "Rust 版本指南"
+
+[output.html]
+additional-js = ["language.js"]
+git-repository-url = "https://github.com/rust-lang-cn/edition-guide-cn"

@@ -25,3 +25,7 @@
 [rust-lang-cn]: https://github.com/rust-lang-cn
 [home]: https://github.com/rust-lang-cn/edition-guide-cn
 [std]: https://doc.rust-lang.org/std/
+
+<script>
+  var default_homepage_md = "introduction.md";
+</script>
