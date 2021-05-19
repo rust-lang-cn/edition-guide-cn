@@ -1,9 +1,11 @@
 [book]
+title = "Rust 版本指南 中文版"
+description = "Rust 版本指南详细介绍了 Rust Edition 的有关信息，Rust 通过 Edition 机制保证稳定性版本前进，让程序在 2015、2018 以及未来的 2021 和 2024 版都能够顺利编译通过"
 authors = ["The Rust Project Developers && Sun Huachuang"]
+translator = "rust-lang-cn"
 multilingual = false
-src = "src"
-title = "Rust 版本指南"
 
 [output.html]
 additional-js = ["language.js"]
 git-repository-url = "https://github.com/rust-lang-cn/edition-guide-cn"
+edit-url-template = "https://github.com/rust-lang-cn/edition-guide-cn/edit/master/{path}"
