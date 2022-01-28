@@ -6,7 +6,7 @@
 > - 《Rust 版本指南》（The Rust Edition Guide 中文版）翻译自 [The Rust Edition Guide][website]，内容已全部翻译完成，查看此书的 [Github 翻译项目和源码][home]。本文版最后更新时间：2019-05-05。
 > - 本文档已加入到 [Rust 中文翻译项目组][rust-lang-cn]，主要译者：[*Sun*](https://github.com/sunhuachuang)，[Rust 中文翻译项目组][rust-lang-cn]成员。
 > - <a href="https://rustwiki.org/en/edition-guide/" style="color:red;">本站支持文档中英文切换</a>，点击页面右上角语言图标可切换到相同章节的英文页面，**英文版每天都会自动同步一次官方的最新版本**。
-> - 若发现本页表达错误或帮助我们改进翻译，可点击右上角的编辑按钮打开当前页对应源码文件进行编辑和修改，Rust 中文资源的开源组织发展离不开大家，感谢您的支持和帮助！
+> - 若发现当前页表达错误或帮助我们改进翻译，可点击右上角的编辑按钮打开该页对应源码文件进行编辑和修改，Rust 中文资源的开源组织发展离不开大家，感谢您的支持和帮助！
 > - 注意：**此文档已较长时间没更新，内容可能比英文滞后较多**。期待您加入 [Rust 中文翻译项目组](https://github.com/rust-lang-cn)，协助我们，一起更新完善中文版，感激不尽！
 
 欢迎来到 Rust 版本(Edition)使用指南！ "Editions" 是通过编写 Rust 代码来传达巨大改变的一种方式。
