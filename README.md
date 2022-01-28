@@ -8,7 +8,7 @@
 ![Locatized 100%](https://img.shields.io/badge/localized-100%25-purple)
 [![rustwiki.org](https://img.shields.io/website?up_message=rustwiki.org&url=https%3A%2F%2Frustwiki.org)](https://rustwiki.org)
 
-> The Chinese Translation of [The Rust Edition Guide](https://github.com/rust-lang-nursery/edition-guide)
+> The Chinese Translation of [The Rust Edition Guide](https://github.com/rust-lang/edition-guide)
 >
 > - 本文档按照 [**Rust 文档翻译指引**](https://rustwiki.org/zh-CN/rust-wiki/translate/rust-translation-guide.html)规范进行翻译。
 > - 首次于 2018-08-22 翻译完全部内容，欢迎纠正——最后更新时间 2019-05-05。
