@@ -42,7 +42,7 @@ $ rustup update
 设置非 `stable` 的为默认版本：
 
 ```console
-$ rustup toolchain default nightly
+$ rustup default nightly
 ```
 
 使用一个 toolchain 而不是默认的，`rustup run`：
